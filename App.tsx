@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Page } from './types';
-import { TRAINING_OFFERS, COLORS, SOCIAL_LINKS } from './constants';
+import { COLORS, SOCIAL_LINKS, WEB_PRODUCTS, WEB_OPTIONS } from './constants';
 import Navbar from './components/Navbar';
 import Card from './components/Card';
 
@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
   const openWhatsApp = (service: string) => {
     const message = encodeURIComponent(`Bonjour NEXALLI, je souhaite obtenir des informations concernant : ${service}`);
-    window.open(`${SOCIAL_LINKS.whatsapp}?text=${message}`, '_blank');
+    window.open(`${SOCIAL_LINKS.whatsapp}&text=${message}`, '_blank');
   };
 
   const handleExternalLink = (url: string) => {
@@ -21,6 +21,50 @@ const App: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
+
+  const renderProductGrid = (products: any[]) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-16">
+      {products.map((product, idx) => (
+        <div key={idx} className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+          <div className="relative h-72 overflow-hidden">
+            <img src={product.imageUrl} alt={product.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div className="absolute bottom-6 left-8 flex items-center space-x-3">
+              <div className="w-12 h-12 bg-[#c9a24d] rounded-xl flex items-center justify-center text-black text-xl">
+                <i className={`fa-solid ${product.icon}`}></i>
+              </div>
+              <span className="text-white font-black uppercase tracking-tighter text-lg">{product.priceInfo}</span>
+            </div>
+          </div>
+          <div className="p-8 flex flex-col flex-grow">
+            <h3 className="text-2xl font-black mb-3 leading-tight uppercase tracking-tighter">{product.title}</h3>
+            <p className="text-gray-600 mb-6 font-medium leading-relaxed">{product.description}</p>
+            <div className="space-y-3 mb-8 flex-grow">
+              {product.points.map((pt: string, i: number) => (
+                <div key={i} className="flex items-center text-sm font-bold text-gray-500">
+                  <i className="fa-solid fa-check text-[#c9a24d] mr-3"></i>
+                  {pt}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Délai estimé</span>
+                <span className="font-black text-black">{product.delay}</span>
+              </div>
+              <button 
+                onClick={() => handleExternalLink(product.link)}
+                className="bg-black text-white px-8 py-4 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all transform active:scale-95 shadow-xl flex items-center space-x-3"
+              >
+                <i className="fa-brands fa-whatsapp text-xl"></i>
+                <span>COMMANDER</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   const renderContent = () => {
     switch (currentPage) {
@@ -39,77 +83,61 @@ const App: React.FC = () => {
                     NEXALLI fusionne stratégie de pointe et design 3D haute fidélité pour propulser votre marque dans une nouvelle dimension de succès.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <button 
-                      onClick={() => setCurrentPage(Page.Services)}
-                      className="bg-[#c9a24d] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all transform hover:scale-105"
-                    >
+                    <button onClick={() => setCurrentPage(Page.Services)} className="bg-[#c9a24d] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all transform hover:scale-105">
                       Nos Services Premium
                     </button>
-                    <button 
-                      onClick={() => setCurrentPage(Page.Contact)}
-                      className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all"
-                    >
+                    <button onClick={() => setCurrentPage(Page.Contact)} className="border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all">
                       Parlons de votre projet
                     </button>
                   </div>
                 </div>
                 <div className="hidden lg:block">
-                  <img 
-                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop" 
-                    alt="Abstract 3D Digital Art" 
-                    className="rounded-3xl shadow-2xl border border-white/10 hover:rotate-2 transition-transform duration-500"
-                  />
+                  <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop" alt="Abstract 3D Digital Art" className="rounded-3xl shadow-2xl border border-white/10 hover:rotate-2 transition-transform duration-500" />
                 </div>
               </div>
             </section>
+          </div>
+        );
 
-            {/* Direct Access Categories with 3D Visuals */}
-            <section className="mb-16">
-              <h3 className="text-3xl font-black mb-8 text-center uppercase tracking-tighter">Explorer nos univers</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { title: "Web & Tech", page: Page.WebDev, img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop", icon: "fa-code" },
-                  { title: "Branding 3D", page: Page.Branding, img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop", icon: "fa-pen-nib" },
-                  { title: "Formations", page: Page.Training, img: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop", icon: "fa-graduation-cap" },
-                  { title: "Événements", page: Page.Events, img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop", icon: "fa-crown" }
-                ].map((cat, i) => (
-                  <div 
-                    key={i}
-                    onClick={() => setCurrentPage(cat.page)}
-                    className="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-[#c9a24d]/20 transition-all border border-gray-100"
-                  >
-                    <img src={cat.img} alt={cat.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80"></div>
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="w-10 h-10 bg-[#c9a24d] rounded-lg flex items-center justify-center text-black mb-3 group-hover:scale-110 transition-transform">
-                        <i className={`fa-solid ${cat.icon}`}></i>
-                      </div>
-                      <h4 className="text-white text-xl font-black uppercase tracking-tight">{cat.title}</h4>
-                      <p className="text-[#c9a24d] text-xs font-bold mt-1 opacity-0 group-hover:opacity-100 transition-opacity">Découvrir l'expertise →</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
+      case Page.WebDev:
+        return (
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            <header className="text-center mb-16">
+              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-xs mb-4 block">Haute Couture Digitale</span>
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos types de site web</h2>
+              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Des solutions sur mesure pour chaque étape de votre croissance.</p>
+            </header>
 
-            {/* Value Propositions */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-[#c9a24d] mb-4"><i className="fa-solid fa-gem text-3xl"></i></div>
-                <h3 className="text-xl font-bold mb-2">Excellence Holographique</h3>
-                <p className="text-gray-600">Une attention méticuleuse aux détails pour des interfaces qui captivent instantanément.</p>
-              </div>
-              <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-[#c9a24d] mb-4"><i className="fa-solid fa-cube text-3xl"></i></div>
-                <h3 className="text-xl font-bold mb-2">Design 3D Réaliste</h3>
-                <p className="text-gray-600">Nous donnons du relief à vos idées avec des rendus photoréalistes et immersifs.</p>
-              </div>
-              <div className="p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-[#c9a24d] mb-4"><i className="fa-solid fa-chart-simple text-3xl"></i></div>
-                <h3 className="text-xl font-bold mb-2">Croissance Exponentielle</h3>
-                <p className="text-gray-600">Des stratégies de conversion basées sur l'analyse de données en temps réel.</p>
-              </div>
+            {renderProductGrid(WEB_PRODUCTS)}
+
+            <header className="text-center mb-16 mt-24">
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos Options</h2>
+              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Boostez les performances de votre site avec nos services complémentaires.</p>
+            </header>
+
+            {renderProductGrid(WEB_OPTIONS)}
+
+            {/* Visual 3D Gallery */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+              {[
+                "https://images.unsplash.com/photo-1614332284683-517b1a7b55a2?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=1000&auto=format&fit=crop"
+              ].map((img, i) => (
+                <div key={i} className="rounded-[2rem] overflow-hidden h-64 shadow-lg border-4 border-white">
+                  <img src={img} className="w-full h-full object-cover" alt="3D Visualization" />
+                </div>
+              ))}
             </div>
+          </div>
+        );
+
+      case Page.Training:
+        return (
+          <div className="text-center py-20">
+            <h2 className="text-3xl font-black">Chargement de l'Académie...</h2>
+            <button onClick={() => setCurrentPage(Page.Home)} className="mt-8 text-[#c9a24d] font-bold">Retour à l'accueil</button>
           </div>
         );
 
@@ -117,49 +145,10 @@ const App: React.FC = () => {
         return (
           <div className="animate-in slide-in-from-bottom-4 duration-500">
             <h2 className="text-4xl font-black mb-2 text-center">Architectes du Digital</h2>
-            <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">Découvrez comment nos expertises combinées peuvent transformer radicalement votre présence en ligne.</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card 
-                title="Ingénierie Web 3.0" 
-                description="Nous concevons des plateformes robustes et évolutives, optimisées pour une vitesse fulgurante et une sécurité sans faille."
-                icon="fa-terminal"
-                onClick={() => setCurrentPage(Page.WebDev)}
-                ctaText="Explorer nos solutions Web"
-              />
-              <Card 
-                title="Branding de Luxe" 
-                description="Créez une identité de marque mémorable qui inspire confiance et autorité dans votre secteur d'activité."
-                icon="fa-signature"
-                onClick={() => setCurrentPage(Page.Branding)}
-                ctaText="Définir mon identité"
-              />
-              <Card 
-                title="Performance Marketing" 
-                description="Tunnels de vente optimisés et campagnes publicitaires de haute précision pour un ROI maximal."
-                icon="fa-gauge-high"
-                onClick={() => setCurrentPage(Page.SocialMedia)}
-                ctaText="Booster mes ventes"
-              />
-            </div>
-          </div>
-        );
-
-      case Page.Training:
-        return (
-          <div className="animate-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-4xl font-black mb-2 text-center">Académie NEXALLI</h2>
-            <p className="text-center text-gray-500 mb-12">Des ressources exclusives pour maîtriser les outils de demain.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {TRAINING_OFFERS.map((offer, idx) => (
-                <Card 
-                  key={idx}
-                  title={offer.title}
-                  description={offer.description}
-                  icon={offer.icon}
-                  onClick={() => handleExternalLink('https://nexalli.com/formation-digitale-pratique/')}
-                  ctaText="Accéder à la formation"
-                />
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <Card title="Ingénierie Web" description="Sites robustes et évolutifs." icon="fa-terminal" onClick={() => setCurrentPage(Page.WebDev)} ctaText="Voir les packs Web" />
+              <Card title="Branding" description="Identité de marque mémorable." icon="fa-signature" onClick={() => setCurrentPage(Page.Branding)} />
+              <Card title="Marketing" description="ROI maximal via Ads." icon="fa-gauge-high" onClick={() => setCurrentPage(Page.SocialMedia)} />
             </div>
           </div>
         );
@@ -167,142 +156,14 @@ const App: React.FC = () => {
       case Page.Events:
         return (
           <div className="max-w-4xl mx-auto text-center animate-in zoom-in-95 duration-500">
-            <div className="bg-black text-white p-16 rounded-[3rem] mb-8 relative overflow-hidden">
+            <div className="bg-black text-white p-16 rounded-[3rem] relative overflow-hidden">
                <div className="absolute inset-0 opacity-30">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="Event Background" />
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover" alt="Event" />
               </div>
               <div className="relative z-10">
                 <i className="fa-solid fa-calendar-check text-7xl text-[#c9a24d] mb-6"></i>
                 <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Événementiel de Prestige</h2>
-                <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto">
-                  Nous transformons vos lancements de produits et galas en expériences immersives inoubliables.
-                </p>
-                <button 
-                  onClick={() => handleExternalLink('https://nexalli.com/organisation-evenement-professionnel/')}
-                  className="bg-[#c9a24d] text-black px-12 py-5 rounded-full font-black text-lg hover:scale-110 transition-transform shadow-xl shadow-[#c9a24d]/30"
-                >
-                  RÉSERVER UN AUDIT ÉVÉNEMENTIEL
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-
-      case Page.WebDev:
-        return (
-          <div className="max-w-6xl mx-auto animate-in fade-in duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              <div>
-                <span className="text-[#c9a24d] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Haute Couture Digitale</span>
-                <h2 className="text-5xl font-black mb-8 leading-tight">L'expertise Web au service de votre rentabilité.</h2>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                  Un site web NEXALLI n'est pas une simple vitrine : c'est un moteur de croissance autonome conçu pour capturer et convertir chaque prospect.
-                </p>
-                <div className="space-y-4 mb-10">
-                  <div className="flex items-center space-x-4 p-4 bg-white border border-gray-100 rounded-2xl">
-                    <i className="fa-solid fa-bolt text-[#c9a24d]"></i>
-                    <span className="font-bold">Score Core Web Vitals : 95+</span>
-                  </div>
-                  <div className="flex items-center space-x-4 p-4 bg-white border border-gray-100 rounded-2xl">
-                    <i className="fa-solid fa-shield-halved text-[#c9a24d]"></i>
-                    <span className="font-bold">Protocoles de sécurité avancés</span>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => handleExternalLink('https://nexalli.com/creation-site-internet-nexalli/')}
-                  className="bg-black text-white px-10 py-5 rounded-2xl font-black w-full md:w-auto hover:bg-[#c9a24d] hover:text-black transition-colors"
-                >
-                  DEVENIR PROPRIÉTAIRE DE SON SITE
-                </button>
-              </div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-[#c9a24d] opacity-20 blur-2xl rounded-full"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1964&auto=format&fit=crop" 
-                  alt="3D Device Mockup" 
-                  className="rounded-[2.5rem] shadow-2xl relative z-10 border-8 border-white"
-                />
-              </div>
-            </div>
-          </div>
-        );
-
-      case Page.Branding:
-        return (
-          <div className="max-w-6xl mx-auto animate-in fade-in duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-              <div className="order-2 md:order-1 relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop" 
-                  alt="Premium Branding 3D" 
-                  className="rounded-[2.5rem] shadow-2xl border-4 border-black"
-                />
-              </div>
-              <div className="order-1 md:order-2">
-                <span className="text-[#c9a24d] font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Identité Visuelle Signature</span>
-                <h2 className="text-5xl font-black mb-8 leading-tight">Marquez les esprits pour les décennies à venir.</h2>
-                <p className="text-gray-600 mb-8 text-lg leading-relaxed">
-                  Nous ne créons pas seulement des logos. Nous forgeons des héritages visuels qui racontent votre story avant même que vous ne parliez.
-                </p>
-                <div className="grid grid-cols-1 gap-4 mb-10">
-                  <div className="flex items-center p-4 bg-black text-white rounded-2xl">
-                    <div className="w-10 h-10 bg-[#c9a24d] rounded-lg flex items-center justify-center mr-4 text-black">
-                      <i className="fa-solid fa-palette"></i>
-                    </div>
-                    <span className="font-bold">Palette chromatique psychologique</span>
-                  </div>
-                  <div className="flex items-center p-4 bg-black text-white rounded-2xl">
-                    <div className="w-10 h-10 bg-[#c9a24d] rounded-lg flex items-center justify-center mr-4 text-black">
-                      <i className="fa-solid fa-font"></i>
-                    </div>
-                    <span className="font-bold">Typographie exclusive sur mesure</span>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => handleExternalLink('https://nexalli.com/branding-identite-visuelle-nexalli/')}
-                  className="bg-black text-white px-10 py-5 rounded-2xl font-black w-full hover:shadow-2xl transition-all"
-                >
-                  INITIALISER MON BRANDING
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-
-      case Page.SocialMedia:
-        return (
-          <div className="max-w-5xl mx-auto animate-in slide-in-from-bottom-4 duration-500">
-            <div className="text-center mb-16">
-              <span className="text-[#c9a24d] font-bold tracking-widest uppercase text-sm mb-4 block">Social Dominance</span>
-              <h2 className="text-5xl font-black mb-6">Dominez l'Attention Digitale</h2>
-              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Stratégies de croissance organique et paid ads pour transformer vos réseaux en machines à cash.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl hover:border-[#c9a24d] transition-colors">
-                <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mb-8 text-white text-2xl">
-                  <i className="fa-solid fa-hashtag"></i>
-                </div>
-                <h3 className="text-2xl font-black mb-4">Gestion Elite de Communauté</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">Contenu viral, engagement proactif et monitoring de réputation 24/7 pour une image impeccable.</p>
-                <button 
-                  onClick={() => handleExternalLink('https://nexalli.com/gestion-reseaux-sociaux/')}
-                  className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-[#c9a24d] hover:text-black transition-all"
-                >
-                  Devenir Viral
-                </button>
-              </div>
-              <div className="bg-white p-10 rounded-3xl border border-gray-100 shadow-xl hover:border-[#c9a24d] transition-colors">
-                <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mb-8 text-white text-2xl">
-                  <i className="fa-solid fa-bullseye"></i>
-                </div>
-                <h3 className="text-2xl font-black mb-4">Ads & Acquisition Haute Précision</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">Ciblage laser des décideurs et des acheteurs compulsifs pour une croissance prédictive.</p>
-                <button 
-                  onClick={() => handleExternalLink('https://nexalli.com/gestion-reseaux-sociaux/')}
-                  className="bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-[#c9a24d] hover:text-black transition-all"
-                >
-                  Scaler mon Business
-                </button>
+                <button onClick={() => handleExternalLink('https://nexalli.com/organisation-evenement-professionnel/')} className="bg-[#c9a24d] text-black px-12 py-5 rounded-full font-black mt-8 hover:scale-110 transition-transform">RÉSERVER UN AUDIT</button>
               </div>
             </div>
           </div>
@@ -312,48 +173,15 @@ const App: React.FC = () => {
         return (
           <div className="max-w-4xl mx-auto animate-in zoom-in-95 duration-500">
             <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100">
-              <div className="bg-black p-12 text-white text-center relative">
-                <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-                  <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" className="w-full h-full object-cover" alt="Overlay" />
-                </div>
-                <h2 className="text-4xl font-black mb-4 relative z-10">Entrez dans le Cercle NEXALLI</h2>
-                <p className="text-[#c9a24d] font-bold text-lg relative z-10">Votre succès commence par un message.</p>
+              <div className="bg-black p-12 text-white text-center">
+                <h2 className="text-4xl font-black mb-4">Entrez dans le Cercle</h2>
+                <p className="text-[#c9a24d] font-bold text-lg">Votre succès commence ici.</p>
               </div>
               <div className="p-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                  <div 
-                    onClick={() => handleExternalLink(`mailto:${contactEmail}`)}
-                    className="flex items-center p-6 bg-gray-50 rounded-3xl cursor-pointer hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200"
-                  >
-                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mr-5 text-2xl text-black">
-                      <i className="fa-solid fa-envelope"></i>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase font-black tracking-widest mb-1">Expertise Mail</p>
-                      <p className="font-bold text-lg">{contactEmail}</p>
-                    </div>
-                  </div>
-                  <div 
-                    onClick={() => handleExternalLink(SOCIAL_LINKS.instagram)}
-                    className="flex items-center p-6 bg-pink-50 rounded-3xl cursor-pointer hover:bg-pink-100 transition-colors border border-transparent hover:border-pink-200"
-                  >
-                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm mr-5 text-2xl text-pink-600">
-                      <i className="fa-brands fa-instagram"></i>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-400 uppercase font-black tracking-widest mb-1">Portfolio Live</p>
-                      <p className="font-bold text-lg">@by_nexalli</p>
-                    </div>
-                  </div>
-                </div>
-                <button 
-                  onClick={() => openWhatsApp('Demande de consultation stratégique')}
-                  className="w-full py-6 bg-black text-white rounded-3xl font-black text-2xl hover:bg-[#c9a24d] hover:text-black transition-all transform active:scale-95 shadow-2xl flex items-center justify-center space-x-4"
-                >
+                <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="w-full py-6 bg-black text-white rounded-3xl font-black text-2xl hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-4">
                   <i className="fa-brands fa-whatsapp text-3xl"></i>
                   <span>LANCER MON PROJET SUR WHATSAPP</span>
                 </button>
-                <p className="text-center mt-6 text-gray-400 text-sm font-medium">Temps de réponse moyen : &lt; 2 heures</p>
               </div>
             </div>
           </div>
@@ -366,7 +194,6 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-[#c9a24d] selection:text-black">
-      {/* Social Banner Top */}
       <div className="bg-black text-white/50 py-2 border-b border-white/10 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-[10px] font-black tracking-widest uppercase">
           <div className="flex space-x-6">
@@ -399,45 +226,25 @@ const App: React.FC = () => {
 
       <footer className="bg-black text-white pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20 text-center md:text-left">
             <div className="col-span-1 md:col-span-2">
               <span className="text-3xl font-black tracking-tighter mb-6 block">NEXALLI <span className="text-[#c9a24d]">.</span></span>
-              <p className="text-gray-400 max-w-sm mb-8 leading-relaxed">
-                Plus qu'une agence, un partenaire de croissance stratégique. Nous redéfinissons les standards du web et du branding moderne.
-              </p>
-              <div className="flex space-x-4">
-                <a href={SOCIAL_LINKS.instagram} target="_blank" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-instagram text-xl"></i></a>
-                <a href={SOCIAL_LINKS.youtube} target="_blank" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-youtube text-xl"></i></a>
-                <a href={SOCIAL_LINKS.tiktok} target="_blank" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-tiktok text-xl"></i></a>
-                <a href={SOCIAL_LINKS.facebook} target="_blank" className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-facebook-f text-xl"></i></a>
-              </div>
+              <p className="text-gray-400 max-w-sm mx-auto md:mx-0 leading-relaxed">Redéfinissons ensemble les standards du web moderne.</p>
             </div>
             <div>
-              <h4 className="text-[#c9a24d] font-black uppercase tracking-widest text-xs mb-6">Expertises</h4>
+              <h4 className="text-[#c9a24d] font-black uppercase text-xs mb-6">Expertises</h4>
               <ul className="space-y-4 text-gray-400 font-bold text-sm">
-                <li><button onClick={() => setCurrentPage(Page.WebDev)} className="hover:text-white transition-colors">Web Development</button></li>
-                <li><button onClick={() => setCurrentPage(Page.Branding)} className="hover:text-white transition-colors">Visual Branding</button></li>
-                <li><button onClick={() => setCurrentPage(Page.SocialMedia)} className="hover:text-white transition-colors">Social Strategy</button></li>
-                <li><button onClick={() => setCurrentPage(Page.Events)} className="hover:text-white transition-colors">Professional Events</button></li>
+                <li><button onClick={() => setCurrentPage(Page.WebDev)} className="hover:text-white">Web Development</button></li>
+                <li><button onClick={() => setCurrentPage(Page.Branding)} className="hover:text-white">Visual Branding</button></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-[#c9a24d] font-black uppercase tracking-widest text-xs mb-6">Contact</h4>
-              <ul className="space-y-4 text-gray-400 font-bold text-sm">
-                <li>{contactEmail}</li>
-                <li>WhatsApp Support 24/7</li>
-                <li className="text-white">Lundi — Samedi</li>
-                <li className="text-white">09:00 — 19:00</li>
-              </ul>
+              <h4 className="text-[#c9a24d] font-black uppercase text-xs mb-6">Contact</h4>
+              <p className="text-gray-400 font-bold text-sm">{contactEmail}</p>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-widest text-gray-500">
+          <div className="border-t border-white/10 pt-10 text-center text-[10px] font-black uppercase tracking-widest text-gray-500">
             <p>© 2026 NEXALLI DIGITAL GROUP. TOUS DROITS RÉSERVÉS.</p>
-            <div className="flex space-x-8 mt-4 md:mt-0">
-              <a href="#" className="hover:text-[#c9a24d] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#c9a24d] transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-[#c9a24d] transition-colors">Cookies</a>
-            </div>
           </div>
         </div>
       </footer>
