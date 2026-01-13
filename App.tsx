@@ -71,22 +71,176 @@ const App: React.FC = () => {
     switch (currentPage) {
       case Page.Home:
         return (
-          <div className="animate-in fade-in zoom-in duration-1000 min-h-[80vh] flex flex-col justify-center items-center text-center">
-            <div className="max-w-6xl px-4 hero-gradient p-12 rounded-[5rem]">
-              <span className="text-[#c9a24d] font-black uppercase tracking-[0.6em] text-[10px] mb-8 block animate-pulse">L'agence Numérique Haute Couture</span>
-              <h1 className="text-6xl md:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase mb-12">
-                Dominez <br/><span className="text-[#c9a24d]">le digital.</span>
-              </h1>
-              <p className="text-xl md:text-3xl text-gray-500 max-w-3xl mx-auto mb-16 font-light leading-relaxed uppercase tracking-tighter">
-                Stratégie, design et ingénierie pour les marques qui refusent la médiocrité.
-              </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <button onClick={() => setCurrentPage(Page.Services)} className="bg-white text-black px-12 py-7 rounded-full font-black text-xs uppercase tracking-[0.4em] hover:bg-[#c9a24d] transition-all transform hover:scale-105">
-                  Explorer l'univers
-                </button>
-                <button onClick={() => setCurrentPage(Page.Contact)} className="border-2 border-white/20 text-white px-12 py-7 rounded-full font-black text-xs uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all">
-                  Contact Direct
-                </button>
+          <div className="animate-in fade-in zoom-in duration-1000 space-y-32">
+            {/* Hero Section */}
+            <div className="min-h-[80vh] flex flex-col justify-center items-center text-center">
+              <div className="max-w-6xl px-4 hero-gradient p-12 rounded-[5rem]">
+                <div className="flex justify-center space-x-6 mb-12 animate-in slide-in-from-top-4 duration-1000">
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.facebook)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-facebook-f"></i></button>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.youtube)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-youtube"></i></button>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.instagram)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-instagram"></i></button>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.tiktok)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-tiktok"></i></button>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-brands fa-whatsapp"></i></button>
+                    <button onClick={() => handleExternalLink(`mailto:${contactEmail}`)} className="w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-[#c9a24d] hover:text-black transition-all"><i className="fa-solid fa-envelope"></i></button>
+                </div>
+                <span className="text-[#c9a24d] font-black uppercase tracking-[0.6em] text-[10px] mb-8 block animate-pulse">L'agence Numérique Haute Couture</span>
+                <h1 className="text-6xl md:text-[10rem] font-black leading-[0.8] tracking-tighter uppercase mb-12">
+                  Dominez <br/><span className="text-[#c9a24d]">le digital.</span>
+                </h1>
+                <p className="text-xl md:text-3xl text-gray-500 max-w-3xl mx-auto mb-16 font-light leading-relaxed uppercase tracking-tighter">
+                  Stratégie, design et ingénierie pour les marques qui refusent la médiocrité.
+                </p>
+                <div className="flex flex-wrap justify-center gap-6">
+                  <button onClick={() => setCurrentPage(Page.Services)} className="bg-white text-black px-12 py-7 rounded-full font-black text-xs uppercase tracking-[0.4em] hover:bg-[#c9a24d] transition-all transform hover:scale-105">
+                    Explorer l'univers
+                  </button>
+                  <button onClick={() => setCurrentPage(Page.Contact)} className="border-2 border-white/20 text-white px-12 py-7 rounded-full font-black text-xs uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all">
+                    Contact Direct
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Section À Propos & Histoire */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center container mx-auto px-6">
+              <div className="relative group overflow-hidden rounded-[4rem] gold-glow h-[600px]">
+                <img 
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                  alt="Nexalli Team"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute bottom-12 left-12 right-12">
+                   <h3 className="text-4xl font-black uppercase text-white mb-4">L'Approche Humaine.</h3>
+                   <p className="text-gray-300 font-bold uppercase tracking-widest text-xs">Pédagogie • Clarté • Autonomie</p>
+                </div>
+              </div>
+              <div className="space-y-12">
+                <div>
+                  <h2 className="text-5xl font-black uppercase tracking-tighter mb-6">À Propos de <span className="text-[#c9a24d]">Nexalli.</span></h2>
+                  <p className="text-gray-400 text-lg font-medium leading-relaxed mb-6">
+                    Nexalli est une structure d’accompagnement digital dédiée aux entreprises, associations et porteurs de projets qui souhaitent se développer, s’organiser et gagner en autonomie, sans se perdre dans des solutions complexes.
+                  </p>
+                  <p className="text-gray-400 text-lg font-medium leading-relaxed">
+                    Nexalli accompagne celles et ceux qui veulent comprendre ce qu’ils font, pourquoi ils le font, et comment avancer efficacement dans le digital.
+                  </p>
+                </div>
+                <div className="glass-card p-10 rounded-[3rem] border-l-4 border-l-[#c9a24d]">
+                  <h3 className="text-xl font-black uppercase mb-6">Notre Genèse</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6 italic">
+                    "Nexalli est née d’un constat très simple : trop de structures se lancent sans comprendre, dépendent de prestataires et accumulent des outils sans méthode."
+                  </p>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {["Expliquer sans jargon", "Accompagner sans infantiliser", "Solutions réalistes", "Aider à devenir autonome"].map((item, idx) => (
+                      <li key={idx} className="flex items-center text-[11px] font-black uppercase text-gray-400">
+                        <i className="fa-solid fa-check text-[#c9a24d] mr-3"></i> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Section Mission & Vision */}
+            <div className="bg-black/50 py-24 rounded-[5rem] container mx-auto px-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                  <h3 className="text-[#c9a24d] font-black uppercase tracking-[0.4em] text-xs mb-8">Notre Mission</h3>
+                  <p className="text-3xl font-black uppercase tracking-tighter mb-8">Prendre de bonnes décisions sans pression ni complexité.</p>
+                  <div className="space-y-4">
+                    {["Comprendre sans être expert", "Éviter les erreurs coûteuses", "Structurer sa présence", "Gagner du temps & sérénité"].map((pt, i) => (
+                      <div key={i} className="flex items-center space-x-4 glass-card p-4 rounded-2xl border-white/5">
+                        <i className="fa-solid fa-shield-halved text-[#c9a24d]"></i>
+                        <span className="text-[10px] font-black uppercase text-gray-300 tracking-widest">{pt}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-[#c9a24d] font-black uppercase tracking-[0.4em] text-xs mb-8">Notre Vision</h3>
+                  <p className="text-3xl font-black uppercase tracking-tighter mb-8">Le digital est un outil, pas une finalité.</p>
+                  <div className="grid grid-cols-1 gap-6">
+                    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10">
+                      <p className="text-gray-400 font-medium leading-relaxed">
+                        Nous croyons que la simplicité est une force et qu'une bonne organisation vaut mieux que trop d’outils. Chaque projet mérite d’être maîtrisé.
+                      </p>
+                    </div>
+                    <div className="p-8 rounded-[2rem] border border-[#c9a24d]/20 bg-[#c9a24d]/5">
+                      <p className="text-[#c9a24d] font-black uppercase text-xs tracking-[0.2em]">Vision claire, réaliste et durable du digital.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Section Partenaire Gringer */}
+            <div className="container mx-auto px-6">
+              <div className="glass-card rounded-[4rem] p-12 md:p-20 overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9a24d]/10 blur-[100px] rounded-full"></div>
+                <div className="flex flex-col lg:flex-row gap-16 items-center">
+                  <div className="lg:w-1/2 space-y-8">
+                    <div className="flex items-center space-x-4 mb-4">
+                      <h2 className="text-4xl font-black uppercase tracking-tighter">Partenaire Hébergement <br/><span className="text-[#c9a24d]">Gringer.</span></h2>
+                    </div>
+                    <p className="text-gray-400 text-lg leading-relaxed">
+                      Pour garantir des sites internet stables, rapides et sécurisés, Nexalli s’appuie sur Gringer, prestataire spécialisé pour les structures recherchant fiabilité et performance sans complexité inutile.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {["Hébergement fiable", "Gestion technique maîtrisée", "Maintenance Nexalli", "Environnement WordPress"].map((item, idx) => (
+                        <div key={idx} className="flex items-center space-x-3 text-[10px] font-black uppercase text-gray-500">
+                          <i className="fa-solid fa-server text-[#c9a24d]"></i>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <button 
+                      onClick={() => handleExternalLink("https://gringer.fr/")}
+                      className="inline-flex items-center space-x-4 bg-white text-black px-10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-[#c9a24d] transition-all transform hover:scale-105"
+                    >
+                      <span>Découvrir Gringer</span>
+                      <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+                  </div>
+                  <div className="lg:w-1/2 grid grid-cols-2 gap-6">
+                    <div className="glass-card p-8 rounded-[2.5rem] flex flex-col items-center text-center">
+                      <i className="fa-solid fa-shield-virus text-3xl text-[#c9a24d] mb-4"></i>
+                      <h4 className="text-white font-black uppercase text-xs mb-2 tracking-widest">Sécurité</h4>
+                      <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tight">Données protégées h24</p>
+                    </div>
+                    <div className="glass-card p-8 rounded-[2.5rem] flex flex-col items-center text-center">
+                      <i className="fa-solid fa-gauge-high text-3xl text-[#c9a24d] mb-4"></i>
+                      <h4 className="text-white font-black uppercase text-xs mb-2 tracking-widest">Vitesse</h4>
+                      <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tight">Infrastructures haute-performance</p>
+                    </div>
+                    <div className="glass-card p-8 rounded-[2.5rem] flex flex-col items-center text-center col-span-2">
+                      <i className="fa-solid fa-heart-pulse text-3xl text-[#c9a24d] mb-4"></i>
+                      <h4 className="text-white font-black uppercase text-xs mb-2 tracking-widest">Maintenance Nexalli</h4>
+                      <p className="text-[9px] text-gray-500 uppercase font-bold tracking-tight italic">Nexalli assure la continuité de votre site, vous n'êtes jamais seul.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Call to Action Final */}
+            <div className="text-center py-20">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12">
+                Envie d’avancer <span className="text-[#c9a24d]">ensemble ?</span>
+              </h2>
+              <div className="flex flex-wrap justify-center gap-8">
+                {[
+                  { label: "Site Internet", icon: "fa-desktop" },
+                  { label: "Communication", icon: "fa-bullhorn" },
+                  { label: "Formation", icon: "fa-graduation-cap" },
+                  { label: "Accompagnement", icon: "fa-handshake-angle" }
+                ].map((item, idx) => (
+                  <div key={idx} onClick={() => setCurrentPage(Page.Contact)} className="cursor-pointer group">
+                    <div className="w-24 h-24 rounded-3xl glass-card flex items-center justify-center mb-4 group-hover:bg-[#c9a24d] group-hover:text-black transition-all">
+                      <i className={`fa-solid ${item.icon} text-2xl`}></i>
+                    </div>
+                    <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">{item.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
