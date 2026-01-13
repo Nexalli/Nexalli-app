@@ -325,23 +325,23 @@ export const FORMATIONS_PRODUCTS: ProductProps[] = [
 
 export const EVENT_TYPES: ProductProps[] = [
   {
-    title: "1. Événements professionnels",
+    title: "1. Des événements professionnels",
     description: "Lancements, conférences et séminaires pour entreprises.",
-    points: ["Lancement produit/service", "Conférences & Séminaires", "Événements internes", "Rencontres clients"],
+    points: ["Lancement de produit ou service", "Conférences et séminaires", "Événements internes", "Rencontres clients / partenaires", "Échange colaboratif", "Événements associatifs"],
     icon: "fa-building",
-    imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1540575861501-7ad0582371f3?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "2. Événements associatifs",
+    title: "2. Des événements associatifs",
     description: "Actions citoyennes, solidaires et institutionnelles.",
-    points: ["Événements solidaires", "Conférences / Débats", "Sensibilisation", "Assemblées générales"],
+    points: ["Événements citoyens ou solidaires", "Conférences / débats", "Actions de sensibilisation", "Rencontres bénévoles", "Assemblées générales"],
     icon: "fa-hand-holding-heart",
-    imageUrl: "https://images.unsplash.com/photo-1528605248644-14dd04cb21c7?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop"
   },
   {
     title: "3. Lancements de projets & marques",
     description: "Visibilité maximale pour vos nouveaux concepts.",
-    points: ["Lancement de marque", "Présentation de projet", "Événements de visibilité", "Suivi Avant/Après"],
+    points: ["Lancements de celle-ci", "Présentation de projet", "Lancement de marque", "Événements internes", "Événement de visibilité", "Suivi avant / Apres"],
     icon: "fa-rocket",
     imageUrl: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
   }
@@ -351,17 +351,17 @@ export const EVENT_ENTERPRISE_PACKS: ProductProps[] = [
   {
     title: "1. Événement Essentiel – Entreprise",
     description: "L'organisation de base pour un événement réussi.",
-    points: ["Analyse des objectifs", "Organisation & Planning", "Coordination générale", "Conseils communication"],
+    points: ["Analyse des objectifs", "Organisation de l’événement", "Planning & déroulé", "Coordination générale", "Conseils communication"],
     icon: "fa-calendar-check",
     priceInfo: "À partir de 1 200 €",
     delay: "2 à 4 semaines",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1475721027187-40aeae739574?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "2. Événement Pro – Entreprise",
+    title: "2. Événement Professionnel – Entreprise",
     description: "Accompagnement complet et présence opérationnelle.",
-    points: ["Organisation complète", "Coordination prestataires", "Communication multi-supports", "Supervision Jour J"],
+    points: ["Organisation complète", "Coordination prestataires", "Communication avant / pendant / après", "Supports visuels simples", "Présence ou supervision le jour J"],
     icon: "fa-crown",
     priceInfo: "À partir de 2 500 €",
     delay: "3 à 6 semaines",
@@ -369,9 +369,9 @@ export const EVENT_ENTERPRISE_PACKS: ProductProps[] = [
     imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "3. Lancement de Projet / Marque",
+    title: "3. Lancement de projet / marque – Entreprise",
     description: "Stratégie événementielle de haute volée.",
-    points: ["Stratégie événementielle", "Branding événementiel", "Communication 360", "Suivi post-événement"],
+    points: ["Stratégie événementielle", "Organisation complète", "Branding événementiel", "Supports de communication multiples", "Suivi post-événement"],
     icon: "fa-gem",
     priceInfo: "Sur devis",
     delay: "Selon projet",
@@ -384,7 +384,7 @@ export const EVENT_ASSOCIATION_PACKS: ProductProps[] = [
   {
     title: "1. Événement Associatif Essentiel",
     description: "Organisation simplifiée adaptée aux budgets associatifs.",
-    points: ["Organisation globale", "Coordination simple", "Aide à la communication", "Suivi dédié"],
+    points: ["Organisation de l’événement", "Coordination simple", "Aide à la communication", "Suivi global"],
     icon: "fa-people-group",
     priceInfo: "À partir de 600 €",
     delay: "2 à 4 semaines",
@@ -394,22 +394,22 @@ export const EVENT_ASSOCIATION_PACKS: ProductProps[] = [
   {
     title: "2. Événement Associatif Complet",
     description: "Prise en charge totale pour votre structure.",
-    points: ["Organisation complète", "Coordination Jour J", "Communication adaptée", "Supports visuels"],
+    points: ["Organisation complète", "Coordination le jour J", "Communication adaptée", "Supports visuels simples"],
     icon: "fa-medal",
     priceInfo: "À partir de 1 000 €",
     delay: "3 à 5 semaines",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1469571483333-f33f917a9821?q=80&w=1000&auto=format&fit=crop"
   },
   {
     title: "3. Événement Solidaire / Citoyen",
     description: "Projets à impact social et subventionnés.",
-    points: ["Analyse du besoin", "Projets subventionnés", "Impact social", "Expertise solidaire"],
+    points: ["Analyse du besoin", "projets subventionnés", "solidaires", "impact social"],
     icon: "fa-earth-africa",
-    priceInfo: "Sur devis (budget asso)",
+    priceInfo: "Sur devis (budget associatif)",
     delay: "Selon projet",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1469571483333-f33f917a9821?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1528605248644-14dd04cb21c7?q=80&w=1000&auto=format&fit=crop"
   }
 ];
 
