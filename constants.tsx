@@ -109,7 +109,98 @@ export const WEB_OPTIONS: ProductProps[] = [
   }
 ];
 
-export const TRAINING_PRODUCTS: any[] = []; // Gardé pour compatibilité de structure
+export const FORMATIONS_PRODUCTS: ProductProps[] = [
+  {
+    title: "1. Gérer son activité simplement avec Excel",
+    objective: "Structurer et suivre son activité sans logiciel coûteux.",
+    description: "Gagner une vision claire sur ses clients, revenus et dépenses.",
+    points: ["Comprendre la structure d'activité", "Vision claire Revenus/Dépenses", "Organisation durable"],
+    icon: "fa-file-excel",
+    link: "https://nexalli.com/produit/excel-organisation-efficace-tome-1/",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bbda48652ad8?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "2. Organisation & productivité digitale",
+    objective: "Mieux s’organiser et réduire la charge mentale.",
+    description: "Retrouvez une organisation plus claire au quotidien.",
+    points: ["Réduire la charge mentale", "Apprendre à prioriser", "Habitudes simples et efficaces"],
+    icon: "fa-bolt",
+    link: "https://nexalli.com/produit/organisation-productivite-digitale-tome-2/",
+    imageUrl: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "3. Gérer ses réseaux sociaux avec Excel",
+    objective: "Organiser sa communication sans stress.",
+    description: "Arrêtez de poster au hasard et sans stratégie.",
+    points: ["Quoi et quand publier", "Vision claire de présence", "Cohérence d'image en ligne"],
+    icon: "fa-hashtag",
+    link: "https://nexalli.com/produit/gerer-ses-reseaux-sociaux-avec-excel/",
+    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "4. Excel facile pour débutants",
+    objective: "Comprendre Excel sans peur ni complexité.",
+    description: "Prenez confiance en vous en partant de zéro.",
+    points: ["Zéro jargon inutile", "Progresser rapidement", "Uniquement l'utile"],
+    icon: "fa-graduation-cap",
+    link: "https://nexalli.com/produit/tome-4-excel-facile-pour-debutants/",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "5. Gestion d’association avec Excel",
+    objective: "Simplifier la gestion associative.",
+    description: "Facilitez le travail des bénévoles et la structure.",
+    points: ["Gestion courante simplifiée", "Vision claire et structurée", "Gain de temps pour l'action"],
+    icon: "fa-users",
+    link: "https://nexalli.com/produit/excel-facile-pour-debutants/",
+    imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "6. Les bases du digital",
+    objective: "Comprendre le digital sans jargon.",
+    description: "Savoir par où commencer sans se disperser.",
+    points: ["Pas de termes compliqués", "Éviter les erreurs courantes", "Vision rassurante"],
+    icon: "fa-globe",
+    link: "https://nexalli.com/produit/comprendre-le-digital/",
+    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "7. Gérer son site WordPress seul",
+    objective: "Être autonome sur son site WordPress.",
+    description: "Devenez autonome sur votre site internet sans code.",
+    points: ["Ne plus dépendre d'un prestataire", "Comprendre sans technique", "Économiser sur la gestion"],
+    icon: "fa-wordpress",
+    link: "https://nexalli.com/produit/gerer-site-wordpress-seul/",
+    imageUrl: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "8. Structurer sa communication digitale",
+    objective: "Arrêter de communiquer au hasard.",
+    description: "Comprendre le pourquoi, le comment et pour qui.",
+    points: ["Cohérence et crédibilité", "Lien Site Web / Réseaux", "Communication sereine"],
+    icon: "fa-bullhorn",
+    link: "https://nexalli.com/produit/structurer-communication-digitale/",
+    imageUrl: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "9. Optimiser son temps",
+    objective: "Travailler mieux, pas plus.",
+    description: "Installer une organisation durable et sereine.",
+    points: ["Mieux organiser ses journées", "Réduire les pertes de temps", "Équilibre retrouvé"],
+    icon: "fa-hourglass-half",
+    link: "https://nexalli.com/produit/optimiser-temps-outils-digitaux/",
+    imageUrl: "https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "10. Les erreurs digitales coûteuses",
+    objective: "Éviter les mauvaises décisions digitales.",
+    description: "Protégez votre temps et votre budget efficacement.",
+    points: ["Décisions digitales sécurisées", "Comprendre les pièges", "Prendre du recul stratégique"],
+    icon: "fa-shield-halved",
+    link: "https://nexalli.com/produit/mauvais-outils-digitaux/",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop"
+  }
+];
 
 export const NAV_ITEMS = [
   { id: Page.Home, label: 'Accueil', icon: 'fa-house' },
