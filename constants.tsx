@@ -183,44 +183,67 @@ export const WEB_PRODUCTS: ProductProps[] = [
 
 export const WEB_OPTIONS: ProductProps[] = [
   {
-    title: "1. Refonte de site internet",
-    description: "Modernisation complète et correction technique de votre site actuel.",
-    points: ["Nouveau Design", "Migration technique", "Hébergement fiable", "Optimisation UX"],
+    title: "1.Refonte de site internet",
+    description: "Inclut : Refonte du design, Modernisation complète.",
+    points: [
+      "Technique de correction",
+      "Migration éventuelle",
+      "Possibilité d’hébergement chez Gringer",
+      "Maintenance 30 €/mois en option"
+    ],
     icon: "fa-arrows-rotate",
+    priceInfo: "Asso : dès 350 € | Ent : dès 500 €",
+    delay: "5 à 10 jours",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1581291518655-950393b7418c?q=80&w=1000&auto=format&fit=crop",
-    priceInfo: "Asso : dès 350 € | Ent. : dès 500 €",
-    delay: "5 à 10 jours"
+    imageUrl: "https://images.unsplash.com/photo-1581291518655-950393b7418c?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "2. L'hébergement & la maintenance",
-    description: "Votre nom de domaine et serveurs fiables à moindre coût.",
-    points: ["Partenaire Gringer", "Certificat SSL inclus", "Infogérance technique", "Idéal WordPress"],
+    title: "2.L' hébergement & la maintenance",
+    description: "Votre nom de domaines à moindre coût.",
+    points: [
+      "Hébergement chez notre partenaire Gringer",
+      "Serveurs fiables & rapides",
+      "Certificat SSL inclus",
+      "Infogérance technique",
+      "Adapté WordPress"
+    ],
     icon: "fa-server",
+    priceInfo: "Tarif selon formule Gringer",
+    delay: "24h/48h",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=1000&auto=format&fit=crop",
-    priceInfo: "Selon formule Gringer",
-    delay: "24h/48h"
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "3. Maintenance Nexalli + Gringer",
-    description: "Mises à jour, sauvegardes et sécurité renforcée (recommandé).",
-    points: ["Mises à jour WordPress", "Sauvegardes régulières", "Support technique", "Sécurité active"],
+    title: "3.Maintenance Gringer + Nexalli",
+    description: "Le service recommandé pour les entreprises & associations.",
+    points: [
+      "Mises à jour WordPress / thème / plugins",
+      "Sauvegardes régulières",
+      "Sécurité renforcée",
+      "Support technique (petites modifications)",
+      "Vérification du bon fonctionnement"
+    ],
     icon: "fa-shield-halved",
-    link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
     priceInfo: "30 € / mois",
-    delay: "Récurrence Mensuelle"
+    delay: "1 fois / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "4. Quelques options supplémentaires",
-    description: "Services sur demande pour booster votre croissance.",
-    points: ["Rédaction SEO (10-30€)", "Page sup (40-60€)", "Optimisation SEO (120€)", "Blog (40€)"],
+    title: "4.Quelques options supplémentaires",
+    description: "Sur demande – pas obligatoire.",
+    points: [
+      "Rédaction SEO : 10 à 30 €/section",
+      "Pages sup : 40 € (asso) / 60 € (ent)",
+      "Optimisation SEO complète : 120 €",
+      "Blog : 40 €",
+      "Création visuelle : 20 à 60 €"
+    ],
     icon: "fa-plus-circle",
+    priceInfo: "Sur devis personnalisé",
+    delay: "Sur demande",
     link: SOCIAL_LINKS.whatsapp,
-    imageUrl: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop",
-    priceInfo: "Sur devis",
-    delay: "Sur demande"
+    imageUrl: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop"
   }
 ];
 
@@ -264,7 +287,7 @@ export const FORMATIONS_PRODUCTS: ProductProps[] = [
       "Améliorer la cohérence de son image en ligne"
     ],
     icon: "fa-hashtag",
-    link: "https://nexalli.com/produit/gerer-ses-reseaux-sociaux-avec-excel/",
+    link: "https://nexalli.com/produit/gerer-ses- réseaux-sociaux-avec-excel/",
     imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop"
   },
   {
