@@ -23,6 +23,75 @@ export interface ProductProps extends ServiceCardProps {
   delay?: string;
 }
 
+export const BRANDING_SERVICES: ProductProps[] = [
+  {
+    title: "1. Logo professionnel",
+    description: "Échange continu lors de l'élaboration pour une identité unique.",
+    points: ["2 à 3 propositions personnalisées", "Accompagnement choix final", "Versions HD (Print & Web)", "Formats PNG/PDF/SVG"],
+    icon: "fa-pen-nib",
+    priceInfo: "Asso : dès 200 € | Ent : dès 350 €",
+    imageUrl: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  },
+  {
+    title: "2. Charte graphique complète",
+    description: "Le guide ultime de votre image de marque pour une cohérence totale.",
+    points: ["Logos Principal + Secondaire", "Palette de couleurs pro", "Typographies signatures", "Règles d'utilisation/Styles"],
+    icon: "fa-palette",
+    priceInfo: "Asso : dès 450 € | Ent : dès 650 €",
+    imageUrl: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  },
+  {
+    title: "3. Kit branding express",
+    description: "Idéal pour lancer une structure rapidement avec professionnalisme.",
+    points: ["Élaboration cahier des charges", "Charte graphique simple", "Palette & Typographies", "Guidelines rapides"],
+    icon: "fa-bolt",
+    priceInfo: "Asso : 250 € | Ent : 350 €",
+    imageUrl: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  },
+  {
+    title: "4. Supports de communication",
+    description: "Vos visuels administratifs et promotionnels au format digital.",
+    points: ["Cartes de visite / Flyers / Affiches", "Visuels Réseaux Sociaux", "En-têtes / Documents PDF", "Pack 4 supports disponible"],
+    icon: "fa-file-invoice",
+    priceInfo: "Dès 60 € / support digital",
+    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  }
+];
+
+export const BRANDING_PACKS: ProductProps[] = [
+  {
+    title: "Pack Branding Essentiel",
+    description: "Idéal pour les projets qui démarrent. Entretien visio inclus.",
+    points: ["Création de logo", "Palette couleurs", "Typographies", "Livraison fichiers digital"],
+    icon: "fa-seedling",
+    priceInfo: "Asso : 300 € | Ent : 450 €",
+    imageUrl: "https://images.unsplash.com/photo-1635405074683-96d6921a2a2c?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  },
+  {
+    title: "Pack Branding Pro",
+    description: "Notre best-seller pour les entreprises établies.",
+    points: ["Logo complet (3 props)", "Charte graphique", "Visuels réseaux sociaux", "Carte de visite ou flyer"],
+    icon: "fa-briefcase",
+    priceInfo: "Asso : 650 € | Ent : 900 €",
+    imageUrl: "https://images.unsplash.com/photo-1542744095-2ad4870f62dd?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  },
+  {
+    title: "Pack Identité Premium",
+    description: "L'image forte et durable pour dominer votre marché.",
+    points: ["Univers visuel complet", "5 supports au choix", "Images cohérentes Web/Social", "Charte pro détaillée"],
+    icon: "fa-crown",
+    priceInfo: "Asso : 1 200 € | Ent : 1 500 €",
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+    link: SOCIAL_LINKS.whatsapp
+  }
+];
+
 export const WEB_PRODUCTS: ProductProps[] = [
   {
     title: "1. Site vitrine professionnel (WordPress)",
