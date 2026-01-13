@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Page } from '../types';
-import { NAV_ITEMS, COLORS } from '../constants';
+import { NAV_ITEMS } from '../constants';
 
 interface NavbarProps {
   currentPage: Page;
@@ -12,58 +12,53 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-[73px] md:top-[105px] z-[55] bg-black/80 backdrop-blur-2xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-center h-16 md:h-20 items-center">
-          {/* Desktop Navigation - Centered for Premium Look */}
-          <div className="hidden lg:flex space-x-2">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setCurrentPage(item.id)}
-                className={`px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
-                  currentPage === item.id 
-                    ? 'text-black bg-[#c9a24d] shadow-[0_0_15px_rgba(201,162,77,0.3)]' 
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile menu toggle */}
-          <div className="lg:hidden flex items-center w-full justify-between">
-            <span className="text-white/30 text-[9px] font-black uppercase tracking-[0.3em]">Menu Digital</span>
+    <nav className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-3xl">
+      <div className="nav-blur rounded-full px-6 py-4 flex items-center justify-between shadow-2xl border border-white/10">
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center justify-center flex-1 space-x-2">
+          {NAV_ITEMS.map((item) => (
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-xl text-[#c9a24d] hover:bg-white/5 focus:outline-none transition-all"
+              key={item.id}
+              onClick={() => setCurrentPage(item.id)}
+              className={`px-5 py-2.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-500 ${
+                currentPage === item.id 
+                  ? 'bg-white text-black shadow-lg' 
+                  : 'text-white/40 hover:text-white hover:bg-white/5'
+              }`}
             >
-              <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars-staggered'} text-xl`}></i>
+              {item.label}
             </button>
-          </div>
+          ))}
+        </div>
+
+        {/* Mobile View */}
+        <div className="md:hidden flex items-center justify-between w-full px-4">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#c9a24d]">Explore</span>
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white bg-white/5 w-10 h-10 rounded-full flex items-center justify-center border border-white/10"
+          >
+            <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars-staggered'}`}></i>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden bg-black border-t border-white/5 animate-in slide-in-from-top duration-300">
-          <div className="px-4 pt-4 pb-8 space-y-2">
+        <div className="absolute bottom-24 left-0 w-full nav-blur rounded-[2.5rem] p-6 animate-in slide-in-from-bottom-10 md:hidden border border-white/10 shadow-3xl">
+          <div className="grid grid-cols-2 gap-4">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
-                onClick={() => {
-                  setCurrentPage(item.id);
-                  setIsOpen(false);
-                }}
-                className={`flex items-center w-full text-left px-5 py-5 rounded-2xl text-sm font-black uppercase tracking-[0.2em] transition-all ${
+                onClick={() => { setCurrentPage(item.id); setIsOpen(false); }}
+                className={`flex flex-col items-center justify-center p-6 rounded-3xl transition-all ${
                   currentPage === item.id 
-                    ? 'bg-[#c9a24d] text-black shadow-lg' 
-                    : 'text-white/40 border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:text-white'
+                    ? 'bg-[#c9a24d] text-black shadow-gold' 
+                    : 'bg-white/5 text-white/50 hover:bg-white/10'
                 }`}
               >
-                <i className={`fa-solid ${item.icon} mr-4 text-lg opacity-80`}></i>
-                {item.label}
+                <i className={`fa-solid ${item.icon} text-lg mb-3`}></i>
+                <span className="text-[9px] font-black uppercase tracking-widest leading-none">{item.label}</span>
               </button>
             ))}
           </div>

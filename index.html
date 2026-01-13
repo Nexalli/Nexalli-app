@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>NEXALLI – L'Excellence Digitale</title>
+  <title>NEXALLI – Agence Digitale Haute Couture</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #050505;
       --accent: #c9a24d;
-      --accent-light: #e5c786;
+      --accent-soft: rgba(201, 162, 77, 0.1);
     }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Outfit', sans-serif;
       background-color: var(--primary);
       color: #ffffff;
       margin: 0;
@@ -23,30 +23,40 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Outfit', sans-serif;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    #root {
-      min-height: 100vh;
+    .glass-card:hover {
+      border-color: rgba(201, 162, 77, 0.3);
+      background: rgba(201, 162, 77, 0.02);
+      transform: translateY(-8px);
     }
-    /* Smooth scaling for mobile titles */
-    .mobile-title {
-      font-size: clamp(1.75rem, 8vw, 3.5rem);
+    .gold-glow {
+      box-shadow: 0 0 25px var(--accent-soft);
     }
-    .selection-gold::selection {
-      background: var(--accent);
-      color: black;
+    .text-gold {
+      color: var(--accent);
     }
-    /* Custom scrollbar for digital feel */
+    .bg-gold {
+      background-color: var(--accent);
+    }
+    .nav-blur {
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
     ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #000;
+      width: 5px;
     }
     ::-webkit-scrollbar-thumb {
       background: var(--accent);
       border-radius: 10px;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at top right, rgba(201, 162, 77, 0.05), transparent 60%);
     }
   </style>
 <script type="importmap">
@@ -61,7 +71,7 @@
 }
 </script>
 </head>
-<body class="selection-gold">
+<body class="selection:bg-[#c9a24d] selection:text-black">
   <div id="root"></div>
   <script type="module" src="./index.tsx"></script>
 </body>
