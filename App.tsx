@@ -90,6 +90,240 @@ const App: React.FC = () => {
           </div>
         );
 
+      case Page.SocialMedia:
+        return (
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            {/* Manifesto Section */}
+            <section className="bg-white rounded-[3rem] p-12 mb-16 border border-gray-100 shadow-sm text-center">
+              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-xs mb-6 block">Stratégie d'Influence</span>
+              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter">Pourquoi être présent sur TikTok & Instagram ?</h2>
+              <div className="max-w-4xl mx-auto space-y-6 text-lg text-gray-600 font-medium">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left mb-8">
+                  {[
+                    "Développer votre visibilité",
+                    "Toucher un public ciblé",
+                    "Valoriser vos projets, actions ou produits",
+                    "Créer du lien avec votre communauté",
+                    "Humaniser votre communication"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center space-x-3">
+                      <div className="w-6 h-6 rounded-full bg-[#c9a24d]/20 flex items-center justify-center text-[#c9a24d]">
+                        <i className="fa-solid fa-check text-xs"></i>
+                      </div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="font-black text-black pt-6 border-t border-gray-100 uppercase tracking-tight">
+                  Même avec peu d’abonnés, une stratégie claire peut faire la différence.
+                </p>
+              </div>
+            </section>
+
+            {/* Platform Services */}
+            <header className="text-center mb-16">
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos services réseaux sociaux</h2>
+            </header>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
+              {/* TikTok */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl flex flex-col group">
+                <div className="h-64 relative overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="TikTok 3D" />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <i className="fa-brands fa-tiktok text-6xl text-white"></i>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-3xl font-black mb-4 uppercase">1. TikTok</h3>
+                  <ul className="space-y-3 mb-8 flex-grow font-bold text-gray-500">
+                    <li><i className="fa-solid fa-video text-[#c9a24d] mr-2"></i>Création de vidéos courtes</li>
+                    <li><i className="fa-solid fa-star text-[#c9a24d] mr-2"></i>Mise en avant de projets</li>
+                    <li><i className="fa-solid fa-user-group text-[#c9a24d] mr-2"></i>Contenu authentique & humain</li>
+                    <li><i className="fa-solid fa-bolt text-[#c9a24d] mr-2"></i>Tendances adaptées</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.tiktok)} className="bg-black text-white py-4 rounded-xl font-black hover:bg-[#c9a24d] hover:text-black transition-all">VOIR NOTRE TIKTOK</button>
+                </div>
+              </div>
+              {/* Instagram */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl flex flex-col group">
+                <div className="h-64 relative overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1611224885990-ab7363d1f2a9?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Instagram 3D" />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <i className="fa-brands fa-instagram text-6xl text-white"></i>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-3xl font-black mb-4 uppercase">2. Instagram</h3>
+                  <ul className="space-y-3 mb-8 flex-grow font-bold text-gray-500">
+                    <li><i className="fa-solid fa-camera text-[#c9a24d] mr-2"></i>Publications (posts & reels)</li>
+                    <li><i className="fa-solid fa-circle-dot text-[#c9a24d] mr-2"></i>Stories quotidiennes</li>
+                    <li><i className="fa-solid fa-eye text-[#c9a24d] mr-2"></i>Mise en valeur visuelle</li>
+                    <li><i className="fa-solid fa-palette text-[#c9a24d] mr-2"></i>Cohérence identité visuelle</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.instagram)} className="bg-black text-white py-4 rounded-xl font-black hover:bg-[#c9a24d] hover:text-black transition-all">VOIR NOTRE INSTAGRAM</button>
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing Tiers Section */}
+            <header className="text-center mb-16">
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">PRODUITS & TARIFS RÉSEAUX SOCIAUX</h2>
+              <p className="text-gray-500 text-xl">Tarifs indicatifs – sans engagement long terme obligatoire.</p>
+            </header>
+
+            {/* Enterprise Offers */}
+            <h3 className="text-3xl font-black mb-10 uppercase text-center tracking-widest border-b-4 border-[#c9a24d] inline-block mx-auto w-full pb-4">OFFRES POUR ENTREPRISES</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 mt-8">
+              {[
+                {
+                  title: "Starter Réseaux Sociaux",
+                  price: "150 € / mois",
+                  points: ["Audit rapide du compte", "4 publications / mois", "Légendes + hashtags", "Conseils & Suivi hebdomadaire", "Durée min : 1 mois"],
+                  desc: "Pour démarrer proprement.",
+                  img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+                },
+                {
+                  title: "Développement Insta & TikTok",
+                  price: "300 € / mois",
+                  points: ["8 contenus / mois (Reels/TikTok)", "Légendes optimisées", "Hashtags ciblés", "Planning de publication", "Suivi & Conseils stratégiques"],
+                  desc: "Engagement recommandé : 2 à 3 mois",
+                  img: "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=1000&auto=format&fit=crop"
+                },
+                {
+                  title: "Visibilité & Croissance",
+                  price: "500 € / mois",
+                  points: ["12 contenus / mois", "TikTok + Instagram", "Stories incluses", "Analyse des performances", "Ajustements mensuels"],
+                  desc: "Engagement recommandé : 3 mois",
+                  img: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop"
+                }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full group">
+                  <div className="h-48 overflow-hidden relative">
+                    <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute top-4 right-4 bg-black text-[#c9a24d] px-4 py-2 rounded-lg font-black">{item.price}</div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h4 className="text-xl font-black mb-4 uppercase">{item.title}</h4>
+                    <ul className="text-sm space-y-2 mb-6 flex-grow text-gray-500 font-bold">
+                      {item.points.map((p, pi) => <li key={pi}><i className="fa-solid fa-check text-[#c9a24d] mr-2"></i>{p}</li>)}
+                    </ul>
+                    <p className="text-xs italic text-gray-400 mb-6">{item.desc}</p>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-4 rounded-xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-2">
+                      <i className="fa-brands fa-whatsapp"></i>
+                      <span>COMMANDER</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Association Offers */}
+            <h3 className="text-3xl font-black mb-10 uppercase text-center tracking-widest border-b-4 border-black inline-block mx-auto w-full pb-4">OFFRES POUR ASSOCIATIONS</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 mt-8">
+              {[
+                {
+                  title: "Starter Associatif",
+                  price: "80 € / mois",
+                  points: ["3 publications / mois", "Mise en valeur des actions", "Légendes simples", "Hashtags associatifs", "Durée min : 1 mois"],
+                  desc: "Pour démarrer proprement.",
+                  img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
+                },
+                {
+                  title: "Animation Associative",
+                  price: "150 € / mois",
+                  points: ["6 publications / mois", "Posts + Stories", "Aide à la mobilisation", "Conseils communication", "Suivi hebdomadaire"],
+                  desc: "Engagement recommandé : 2 à 3 mois",
+                  img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop"
+                },
+                {
+                  title: "Campagne Associative",
+                  price: "Dès 250 €",
+                  points: ["Campagnes spécifiques", "Sensibilisation", "Appels à mobilisation", "Audit complet", "Action ponctuelle"],
+                  desc: "Engagement recommandé 1 fois (ponctuel)",
+                  img: "https://images.unsplash.com/photo-1469571483333-f33f917a9821?q=80&w=1000&auto=format&fit=crop"
+                }
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-[2rem] overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full group">
+                  <div className="h-48 overflow-hidden relative">
+                    <img src={item.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute top-4 right-4 bg-[#c9a24d] text-black px-4 py-2 rounded-lg font-black">{item.price}</div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h4 className="text-xl font-black mb-4 uppercase">{item.title}</h4>
+                    <ul className="text-sm space-y-2 mb-6 flex-grow text-gray-500 font-bold">
+                      {item.points.map((p, pi) => <li key={pi}><i className="fa-solid fa-check text-black mr-2"></i>{p}</li>)}
+                    </ul>
+                    <p className="text-xs italic text-gray-400 mb-6">{item.desc}</p>
+                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-4 rounded-xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-2">
+                      <i className="fa-brands fa-whatsapp"></i>
+                      <span>COMMANDER</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* A la Carte Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+              <div className="bg-gray-100 p-10 rounded-[3rem] border border-gray-200">
+                <h3 className="text-3xl font-black mb-8 uppercase">Création de contenu à la carte</h3>
+                <div className="space-y-4 font-bold text-gray-700">
+                  <div className="flex justify-between border-b border-gray-200 pb-2"><span>Vidéo TikTok</span> <span>30 € / vidéo</span></div>
+                  <div className="flex justify-between border-b border-gray-200 pb-2"><span>Reel Instagram</span> <span>30 € / vidéo</span></div>
+                  <div className="flex justify-between border-b border-gray-200 pb-2"><span>Visuel post</span> <span>20 €</span></div>
+                  <div className="flex justify-between border-b border-gray-200 pb-2"><span>Story (lot de 5)</span> <span>25 €</span></div>
+                  <div className="flex justify-between border-b border-gray-200 pb-2"><span>Texte / légende optimisée</span> <span>10 €</span></div>
+                </div>
+                <div className="mt-10 p-6 bg-white rounded-2xl shadow-sm">
+                  <h4 className="font-black uppercase text-xs text-[#c9a24d] mb-4">Délais de mise en place</h4>
+                  <ul className="text-sm space-y-2 font-bold opacity-70">
+                    <li>Mise en place des comptes : 3 à 5 jours</li>
+                    <li>Première publication : sous 7 jours</li>
+                    <li>Contenus mensuels : planifiés à l’avance</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-black text-white p-10 rounded-[3rem] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#c9a24d] opacity-10 blur-3xl"></div>
+                <h3 className="text-3xl font-black mb-8 uppercase text-[#c9a24d]">Ce que Nexalli ne promet PAS</h3>
+                <div className="space-y-6">
+                  <ul className="space-y-4 font-black uppercase text-sm tracking-tight">
+                    <li className="flex items-center text-red-400"><i className="fa-solid fa-xmark mr-4"></i>Pas d’achat de followers</li>
+                    <li className="flex items-center text-red-400"><i className="fa-solid fa-xmark mr-4"></i>Pas de fausses vues</li>
+                    <li className="flex items-center text-red-400"><i className="fa-solid fa-xmark mr-4"></i>Pas de promesses irréalistes</li>
+                  </ul>
+                  <div className="pt-8 border-t border-white/20">
+                    <ul className="space-y-4 font-bold text-gray-400">
+                      <li className="flex items-center"><i className="fa-solid fa-circle-check text-[#c9a24d] mr-4"></i>Une croissance progressive</li>
+                      <li className="flex items-center"><i className="fa-solid fa-circle-check text-[#c9a24d] mr-4"></i>Une communication authentique</li>
+                      <li className="flex items-center"><i className="fa-solid fa-circle-check text-[#c9a24d] mr-4"></i>Une stratégie adaptée à votre réalité</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Why Choose Section & Final Gallery */}
+            <header className="text-center mb-16">
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Pourquoi choisir Nexalli ?</h2>
+              <p className="text-gray-500 text-xl">L'authenticité au service de votre croissance digitale.</p>
+            </header>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+              {[
+                "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=1000&auto=format&fit=crop"
+              ].map((img, i) => (
+                <div key={i} className="rounded-[2rem] overflow-hidden h-64 shadow-2xl border-4 border-white transform hover:rotate-2 transition-transform duration-500">
+                  <img src={img} className="w-full h-full object-cover" alt="Social Media Strategy Visualization" />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
       case Page.WebDev:
         return (
           <div className="animate-in slide-in-from-bottom-4 duration-500">
