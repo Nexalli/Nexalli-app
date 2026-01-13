@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
-  // Fix: Defined the missing contactEmail variable
   const contactEmail = "contact@nexalli.com";
 
   const handleExternalLink = (url: string) => {
@@ -150,6 +149,62 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
               {SOCIAL_PLATFORMS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
             </div>
+
+            {/* Nouveau Bloc : Création à la carte */}
+            <div className="mb-24">
+              <PageHeader title="À La Carte" subtitle="Solutions sur-mesure pour vos réseaux" />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="glass-card rounded-[3rem] p-10 md:p-14 border-l-4 border-l-[#c9a24d]">
+                  <h3 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center">
+                    <i className="fa-solid fa-palette text-[#c9a24d] mr-4"></i>
+                    Contenu Individuel
+                  </h3>
+                  <div className="space-y-6">
+                    {[
+                      { label: "Vidéo TikTok", price: "30 € / vidéo" },
+                      { label: "Reel Instagram", price: "30 € / vidéo" },
+                      { label: "Visuel post", price: "20 €" },
+                      { label: "Story (lot de 5)", price: "25 €" },
+                      { label: "Texte / légende optimisée", price: "10 €" }
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-4 group hover:border-[#c9a24d]/30 transition-colors">
+                        <span className="text-gray-400 font-bold uppercase text-[11px] tracking-widest">{item.label}</span>
+                        <span className="text-white font-black text-sm">{item.price}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button 
+                    onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)}
+                    className="mt-10 w-full bg-white text-black py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-[#c9a24d] transition-all flex items-center justify-center space-x-3"
+                  >
+                    <i className="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Commander via WhatsApp</span>
+                  </button>
+                </div>
+
+                <div className="glass-card rounded-[3rem] p-10 md:p-14 border-l-4 border-l-white/20">
+                  <h3 className="text-2xl font-black uppercase tracking-tighter mb-8 flex items-center">
+                    <i className="fa-solid fa-clock text-[#c9a24d] mr-4"></i>
+                    Délais d'exécution
+                  </h3>
+                  <div className="space-y-8">
+                    {[
+                      { title: "Mise en place des comptes", desc: "Configuration technique et optimisation", time: "3 à 5 jours" },
+                      { title: "Première publication", desc: "Lancement de votre nouvelle ligne éditoriale", time: "Sous 7 jours" },
+                      { title: "Contenus mensuels", desc: "Production continue et planification", time: "Planifiés à l’avance" }
+                    ].map((item, idx) => (
+                      <div key={idx} className="relative pl-8 border-l border-white/10">
+                        <div className="absolute top-0 left-[-5px] w-2.5 h-2.5 rounded-full bg-[#c9a24d]"></div>
+                        <h4 className="text-white font-black text-xs uppercase tracking-widest mb-1">{item.title}</h4>
+                        <p className="text-gray-500 text-[10px] font-bold uppercase tracking-tight mb-2">{item.desc}</p>
+                        <span className="text-[#c9a24d] font-black text-xs uppercase tracking-widest">{item.time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <PageHeader title="Stratégie" subtitle="Plans d'action Entreprises & Associations" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
               {SOCIAL_ENTERPRISE_PACKS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
