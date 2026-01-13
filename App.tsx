@@ -146,11 +146,51 @@ const App: React.FC = () => {
         return (
           <div className="animate-in slide-in-from-bottom-8 duration-700">
             <PageHeader title="Social" subtitle="Influence & Domination Sociale" />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
-              {SOCIAL_PLATFORMS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
+            
+            {/* 1. Bloc Argumentaire */}
+            <div className="mb-24">
+              <div className="glass-card rounded-[4rem] overflow-hidden flex flex-col lg:flex-row items-center">
+                <div className="w-full lg:w-1/2 h-80 lg:h-auto self-stretch">
+                  <img 
+                    src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1200&auto=format&fit=crop" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                    alt="Social Strategy"
+                  />
+                </div>
+                <div className="p-10 lg:p-20 lg:w-1/2">
+                  <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-8 leading-tight">
+                    Pourquoi être présent sur <br/><span className="text-[#c9a24d]">TikTok & Instagram ?</span>
+                  </h3>
+                  <ul className="space-y-4">
+                    {[
+                      "Développer votre visibilité",
+                      "Toucher un public ciblé",
+                      "Valoriser vos projets, actions ou produits",
+                      "Créer du lien avec votre communauté",
+                      "Humaniser votre communication"
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-center text-gray-400 font-bold uppercase text-[11px] tracking-widest">
+                        <i className="fa-solid fa-check text-[#c9a24d] mr-4"></i>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 text-[10px] text-gray-500 font-black uppercase tracking-widest italic">
+                    Même avec peu d’abonnés, une stratégie claire peut faire la différence.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Bloc : Création à la carte */}
+            {/* 2. Nos services réseaux sociaux */}
+            <div className="mb-24">
+              <PageHeader title="Nos Services" subtitle="Expertise & Accompagnement" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {SOCIAL_PLATFORMS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
+              </div>
+            </div>
+
+            {/* 3. Bloc : Création à la carte */}
             <div className="mb-24">
               <PageHeader title="À La Carte" subtitle="Solutions sur-mesure pour vos réseaux" />
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -205,7 +245,111 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Nouveau Bloc : Ce que Nexalli ne promet PAS */}
+            {/* 4. Produits & Tarifs - Entreprises */}
+            <div className="mb-24">
+              <PageHeader title="Offres Entreprises" subtitle="Produits & Tarifs Réseaux Sociaux (Sans engagement long terme)" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "1. Starter Réseaux Sociaux",
+                    price: "150 € / mois",
+                    points: ["Echange de confiance du réseau si existant", "Audit rapide du compte", "4 publications / mois (posts ou reels)", "Légendes + hashtags", "Conseils de publication", "Suivi ponctuel / semaine", "Durée minimale : 1 mois"],
+                    desc: "Pour démarrer proprement.",
+                    icon: "fa-seedling"
+                  },
+                  {
+                    title: "2. Développement Instagram & TikTok",
+                    price: "300 € / mois",
+                    points: ["8 contenus / mois (posts, reels ou TikTok)", "Légendes optimisées", "Hashtags ciblés", "Planification de la publication", "Conseils stratégie", "Suivi ponctuel / semaine", "Durée minimale : 1 mois"],
+                    desc: "Engagement recommandé : 2 à 3 mois",
+                    icon: "fa-chart-line"
+                  },
+                  {
+                    title: "3. Visibilité & Croissance",
+                    price: "500 € / mois",
+                    points: ["12 contenus / mois", "TikTok + Instagram", "Stories incluses", "Analyse des performances", "Ajustements mensuels", "Suivi ponctuel / semaine", "Durée minimale : 1 mois"],
+                    desc: "Engagement recommandé : 3 mois",
+                    icon: "fa-rocket"
+                  }
+                ].map((p, i) => (
+                  <div key={i} className="glass-card rounded-[3rem] p-10 flex flex-col h-full border-t-4 border-t-[#c9a24d]">
+                    <div className="mb-6">
+                      <h4 className="text-white font-black text-xl uppercase tracking-tighter mb-2">{p.title}</h4>
+                      <p className="text-[#c9a24d] font-black text-2xl mb-4">{p.price}</p>
+                      <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">{p.desc}</p>
+                    </div>
+                    <ul className="space-y-3 mb-10 flex-grow">
+                      {p.points.map((pt, idx) => (
+                        <li key={idx} className="flex items-start text-[10px] font-bold text-gray-400 uppercase tracking-tight">
+                          <i className="fa-solid fa-circle-check text-[#c9a24d] mr-3 mt-1 text-[8px]"></i>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <button 
+                      onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)}
+                      className="w-full bg-white text-black py-4 rounded-2xl font-black uppercase text-[9px] tracking-[0.2em] hover:bg-[#c9a24d] transition-all"
+                    >
+                      Commander via WhatsApp
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 5. Produits & Tarifs - Associations */}
+            <div className="mb-24">
+              <PageHeader title="Offres Associations" subtitle="Tarifs adaptés pour les structures solidaires" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "1. Starter Associatif",
+                    price: "80 € / mois",
+                    points: ["Echange de confiance du réseau si existant", "3 publications / mois", "Mise en valeur des actions", "Légendes simples", "Hashtags associatifs", "Durée minimale : 1 mois"],
+                    desc: "Pour démarrer proprement.",
+                    icon: "fa-hand-holding-heart"
+                  },
+                  {
+                    title: "2. Animation associative",
+                    price: "150 € / mois",
+                    points: ["6 publications / mois", "Articles et récits", "Aide à la mobilisation", "Conseils communication", "Suivi ponctuel / semaine", "Durée minimale : 1 mois"],
+                    desc: "Engagement recommandé : 2 à 3 mois",
+                    icon: "fa-users-gear"
+                  },
+                  {
+                    title: "3. Campagne associative",
+                    price: "Dès 250 €",
+                    points: ["Événements", "Campagnes de sensibilisation", "Appels à mobilisation", "Audit stratégique", "Durée minimale : selon la demande"],
+                    desc: "Engagement recommandé : Ponctuel",
+                    icon: "fa-bullhorn"
+                  }
+                ].map((p, i) => (
+                  <div key={i} className="glass-card rounded-[3rem] p-10 flex flex-col h-full border-t-4 border-t-white/10">
+                    <div className="mb-6">
+                      <h4 className="text-white font-black text-xl uppercase tracking-tighter mb-2">{p.title}</h4>
+                      <p className="text-white font-black text-2xl mb-4">{p.price}</p>
+                      <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">{p.desc}</p>
+                    </div>
+                    <ul className="space-y-3 mb-10 flex-grow">
+                      {p.points.map((pt, idx) => (
+                        <li key={idx} className="flex items-start text-[10px] font-bold text-gray-400 uppercase tracking-tight">
+                          <i className="fa-solid fa-circle-check text-[#c9a24d] mr-3 mt-1 text-[8px]"></i>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <button 
+                      onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)}
+                      className="w-full bg-white/5 border border-white/10 text-white py-4 rounded-2xl font-black uppercase text-[9px] tracking-[0.2em] hover:bg-white hover:text-black transition-all"
+                    >
+                      Commander via WhatsApp
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 6. Ce que Nexalli ne promet PAS (Conservé) */}
             <div className="mb-24">
               <PageHeader title="Éthique & Valeurs" subtitle="Ce que Nexalli ne promet PAS" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -217,11 +361,7 @@ const App: React.FC = () => {
                     <h3 className="text-2xl font-black uppercase tracking-tighter text-white">Nexalli ne fait pas</h3>
                   </div>
                   <div className="space-y-6">
-                    {[
-                      "Pas d’achat de followers",
-                      "Pas de fausses vues",
-                      "Pas de promesses irréalistes"
-                    ].map((text, idx) => (
+                    {["Pas d’achat de followers", "Pas de fausses vues", "Pas de promesses irréalistes"].map((text, idx) => (
                       <div key={idx} className="flex items-center text-gray-400 font-bold uppercase text-[11px] tracking-widest">
                         <i className="fa-solid fa-xmark text-red-600 mr-4 text-sm"></i>
                         {text}
@@ -238,11 +378,7 @@ const App: React.FC = () => {
                     <h3 className="text-2xl font-black uppercase tracking-tighter text-white">Nexalli fait</h3>
                   </div>
                   <div className="space-y-6">
-                    {[
-                      "Une croissance progressive",
-                      "Une communication authentique",
-                      "Une stratégie adaptée à votre réalité"
-                    ].map((text, idx) => (
+                    {["Une croissance progressive", "Une communication authentique", "Une stratégie adaptée à votre réalité"].map((text, idx) => (
                       <div key={idx} className="flex items-center text-gray-400 font-bold uppercase text-[11px] tracking-widest">
                         <i className="fa-solid fa-check text-[#c9a24d] mr-4 text-sm"></i>
                         {text}
@@ -251,14 +387,6 @@ const App: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <PageHeader title="Stratégie" subtitle="Plans d'action Entreprises & Associations" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-              {SOCIAL_ENTERPRISE_PACKS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {SOCIAL_ASSOCIATION_PACKS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
             </div>
           </div>
         );
