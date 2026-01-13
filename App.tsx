@@ -150,7 +150,7 @@ const App: React.FC = () => {
               {SOCIAL_PLATFORMS.map((p, i) => <div key={i}>{renderProductCard(p)}</div>)}
             </div>
 
-            {/* Nouveau Bloc : Création à la carte */}
+            {/* Bloc : Création à la carte */}
             <div className="mb-24">
               <PageHeader title="À La Carte" subtitle="Solutions sur-mesure pour vos réseaux" />
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -198,6 +198,54 @@ const App: React.FC = () => {
                         <h4 className="text-white font-black text-xs uppercase tracking-widest mb-1">{item.title}</h4>
                         <p className="text-gray-500 text-[10px] font-bold uppercase tracking-tight mb-2">{item.desc}</p>
                         <span className="text-[#c9a24d] font-black text-xs uppercase tracking-widest">{item.time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Nouveau Bloc : Ce que Nexalli ne promet PAS */}
+            <div className="mb-24">
+              <PageHeader title="Éthique & Valeurs" subtitle="Ce que Nexalli ne promet PAS" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="glass-card rounded-[3rem] p-10 md:p-14 border border-red-900/20 group hover:border-red-600/40 transition-all">
+                  <div className="flex items-center space-x-4 mb-10">
+                    <div className="w-14 h-14 rounded-2xl bg-red-900/30 flex items-center justify-center text-red-500">
+                      <i className="fa-solid fa-ban text-2xl"></i>
+                    </div>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter text-white">Nexalli ne fait pas</h3>
+                  </div>
+                  <div className="space-y-6">
+                    {[
+                      "Pas d’achat de followers",
+                      "Pas de fausses vues",
+                      "Pas de promesses irréalistes"
+                    ].map((text, idx) => (
+                      <div key={idx} className="flex items-center text-gray-400 font-bold uppercase text-[11px] tracking-widest">
+                        <i className="fa-solid fa-xmark text-red-600 mr-4 text-sm"></i>
+                        {text}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="glass-card rounded-[3rem] p-10 md:p-14 border border-[#c9a24d]/20 group hover:border-[#c9a24d]/40 transition-all">
+                  <div className="flex items-center space-x-4 mb-10">
+                    <div className="w-14 h-14 rounded-2xl bg-[#c9a24d]/20 flex items-center justify-center text-[#c9a24d]">
+                      <i className="fa-solid fa-check-double text-2xl"></i>
+                    </div>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter text-white">Nexalli fait</h3>
+                  </div>
+                  <div className="space-y-6">
+                    {[
+                      "Une croissance progressive",
+                      "Une communication authentique",
+                      "Une stratégie adaptée à votre réalité"
+                    ].map((text, idx) => (
+                      <div key={idx} className="flex items-center text-gray-400 font-bold uppercase text-[11px] tracking-widest">
+                        <i className="fa-solid fa-check text-[#c9a24d] mr-4 text-sm"></i>
+                        {text}
                       </div>
                     ))}
                   </div>
