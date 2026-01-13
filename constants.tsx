@@ -25,6 +25,137 @@ export interface ProductProps extends ServiceCardProps {
   delay?: string;
 }
 
+export const SOCIAL_PLATFORMS: ProductProps[] = [
+  {
+    title: "1. TikTok",
+    description: "Contenu authentique & humain.",
+    points: [
+      "Création de vidéos courtes",
+      "Mise en avant de projets ou actions",
+      "Tendances adaptées à votre structure"
+    ],
+    icon: "fa-tiktok",
+    link: SOCIAL_LINKS.tiktok,
+    imageUrl: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "2. Instagram",
+    description: "Mise en valeur visuelle.",
+    points: [
+      "Publications (articles et vidéos)",
+      "Histoires (Stories)",
+      "Cohérence avec votre identité visuelle"
+    ],
+    icon: "fa-instagram",
+    link: SOCIAL_LINKS.instagram,
+    imageUrl: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000&auto=format&fit=crop"
+  }
+];
+
+export const SOCIAL_ENTERPRISE_PACKS: ProductProps[] = [
+  {
+    title: "1.Starter Réseaux Sociaux",
+    description: "Pour démarrer proprement.",
+    points: [
+      "Echange de confiance du réseau",
+      "Audit rapide du compte",
+      "4 publications / mois (posts ou reels)",
+      "Légendes + hashtags",
+      "Conseils de publication",
+      "Suivi ponctuel / semaine",
+      "Durée minimale : 1 mois"
+    ],
+    icon: "fa-seedling",
+    priceInfo: "150 € / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "2.Développement Instagram & TikTok",
+    description: "Engagement recommandé : 2 à 3 mois.",
+    points: [
+      "8 contenus / mois (posts, reels ou TikTok)",
+      "Légendes optimisées",
+      "Hashtags ciblés",
+      "Planification de la publication",
+      "Conseils stratégie",
+      "Suivi ponctuel / semaine",
+      "Durée minimale : 1 mois"
+    ],
+    icon: "fa-chart-line",
+    priceInfo: "300 € / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "3.Visibilité & Croissance",
+    description: "La solution complète Performance.",
+    points: [
+      "12 contenus / mois",
+      "TikTok + Instagram",
+      "Stories incluses",
+      "Analyse des performances",
+      "Ajustements mensuels",
+      "Suivi ponctuel / semaine",
+      "Durée minimale : 1 mois"
+    ],
+    icon: "fa-rocket",
+    priceInfo: "500 € / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bbda48652ad8?q=80&w=1000&auto=format&fit=crop"
+  }
+];
+
+export const SOCIAL_ASSOCIATION_PACKS: ProductProps[] = [
+  {
+    title: "1.Starter Associatif",
+    description: "Pour démarrer proprement.",
+    points: [
+      "Echange de confiance du réseau",
+      "3 publications / mois",
+      "Mise en valeur des actions",
+      "Légendes simples",
+      "Hashtags associatifs",
+      "Durée minimale : 1 mois"
+    ],
+    icon: "fa-hand-holding-heart",
+    priceInfo: "80 € / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1559027615-cd2671c15f81?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "2. Animation associative",
+    description: "Engagement recommandé : 2 à 3 mois.",
+    points: [
+      "6 publications / mois",
+      "Articles et récits",
+      "Aide à la mobilisation",
+      "Conseils communication",
+      "Suivi ponctuel / semaine",
+      "Durée minimale : 1 mois"
+    ],
+    icon: "fa-users-gear",
+    priceInfo: "150 € / mois",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop"
+  },
+  {
+    title: "3.Campagne associative",
+    description: "Engagement recommandé 1 fois (ponctuel).",
+    points: [
+      "Événements / Campagnes",
+      "Sensibilisation",
+      "Appels à mobilisation",
+      "Audit stratégique",
+      "Durée minimale : selon demande"
+    ],
+    icon: "fa-bullhorn",
+    priceInfo: "À partir de 250 €",
+    link: SOCIAL_LINKS.whatsapp,
+    imageUrl: "https://images.unsplash.com/photo-1459183885447-df53d1f0e9bb?q=80&w=1000&auto=format&fit=crop"
+  }
+];
+
 export const BRANDING_SERVICES: ProductProps[] = [
   {
     title: "1.Logo professionnel",

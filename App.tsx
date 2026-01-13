@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Page } from './types';
-import { COLORS, SOCIAL_LINKS, WEB_PRODUCTS, WEB_OPTIONS, FORMATIONS_PRODUCTS, EVENT_TYPES, EVENT_ENTERPRISE_PACKS, EVENT_ASSOCIATION_PACKS, BRANDING_SERVICES, BRANDING_PACKS } from './constants';
+import { COLORS, SOCIAL_LINKS, WEB_PRODUCTS, WEB_OPTIONS, FORMATIONS_PRODUCTS, EVENT_TYPES, EVENT_ENTERPRISE_PACKS, EVENT_ASSOCIATION_PACKS, BRANDING_SERVICES, BRANDING_PACKS, SOCIAL_PLATFORMS, SOCIAL_ENTERPRISE_PACKS, SOCIAL_ASSOCIATION_PACKS } from './constants';
 import Navbar from './components/Navbar';
 import Card from './components/Card';
 
@@ -18,7 +18,7 @@ const App: React.FC = () => {
   }, [currentPage]);
 
   const renderProductGrid = (products: any[]) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
       {products.map((product, idx) => (
         <div key={idx} className="bg-[#111] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-[#222] shadow-2xl hover:border-[#c9a24d]/30 transition-all group flex flex-col h-full">
           <div className="relative h-48 md:h-60 overflow-hidden">
@@ -27,7 +27,7 @@ const App: React.FC = () => {
           </div>
           <div className="p-6 md:p-8 flex flex-col flex-grow">
             <h3 className="text-lg md:text-xl font-black mb-3 leading-tight uppercase tracking-tighter text-white">{product.title}</h3>
-            <p className="text-[#c9a24d] font-black uppercase text-[10px] mb-4 tracking-widest">{product.priceInfo}</p>
+            {product.priceInfo && <p className="text-[#c9a24d] font-black uppercase text-[10px] mb-4 tracking-widest">{product.priceInfo}</p>}
             <div className="space-y-2 mb-8 flex-grow">
               {product.points.map((pt: string, i: number) => (
                 <div key={i} className="flex items-start text-[10px] md:text-xs font-bold text-gray-400">
@@ -35,19 +35,13 @@ const App: React.FC = () => {
                   {pt}
                 </div>
               ))}
-              {product.delay && (
-                <div className="flex items-start text-[10px] font-black text-[#c9a24d] uppercase tracking-widest mt-4 pt-4 border-t border-white/5">
-                  <i className="fa-solid fa-clock mr-2"></i>
-                  {product.delay}
-                </div>
-              )}
             </div>
             <button 
               onClick={() => handleExternalLink(product.link || SOCIAL_LINKS.whatsapp)}
               className="w-full bg-white text-black py-4 rounded-xl font-black hover:bg-[#c9a24d] transition-all transform active:scale-95 shadow-xl flex items-center justify-center space-x-3 text-[10px] uppercase tracking-widest"
             >
-              <i className="fa-brands fa-whatsapp text-lg"></i>
-              <span>Commander</span>
+              <i className={`${product.icon && product.icon.includes('fa-') ? 'fa-brands' : 'fa-solid'} ${product.icon || 'fa-whatsapp'} text-lg`}></i>
+              <span>{product.link && !product.link.includes('whatsapp') ? 'Voir le réseau' : 'Commander'}</span>
             </button>
           </div>
         </div>
@@ -81,6 +75,137 @@ const App: React.FC = () => {
                 </div>
               </div>
             </section>
+          </div>
+        );
+
+      case Page.SocialMedia:
+        return (
+          <div className="animate-in slide-in-from-bottom-4 duration-500 px-2 md:px-0">
+            {/* Manifesto Section */}
+            <section className="bg-[#111] rounded-[2rem] md:rounded-[3.5rem] p-8 md:p-16 mb-16 border border-[#222] shadow-2xl text-center">
+              <span className="text-[#c9a24d] font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 block">Stratégie d'Influence Digitale</span>
+              <h2 className="text-2xl md:text-5xl font-black mb-10 uppercase tracking-tighter text-white">Pourquoi être présent sur TikTok & Instagram ?</h2>
+              <div className="max-w-4xl mx-auto space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
+                  {[
+                    "Développer votre visibilité",
+                    "Toucher un public ciblé",
+                    "Valoriser vos projets, actions ou produits",
+                    "Créer du lien avec votre communauté",
+                    "Humaniser votre communication"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center space-x-4 bg-black/40 p-5 rounded-2xl border border-white/5">
+                      <div className="w-6 h-6 rounded-full bg-[#c9a24d] flex items-center justify-center text-black">
+                        <i className="fa-solid fa-check text-[10px]"></i>
+                      </div>
+                      <span className="text-white font-bold text-xs">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="font-black text-[#c9a24d] pt-8 border-t border-white/5 uppercase tracking-[0.2em] text-[10px] md:text-sm italic">
+                  Même avec peu d’abonnés, une stratégie claire peut faire la différence.
+                </p>
+              </div>
+            </section>
+
+            {/* Network Services */}
+            <header className="text-center mb-16">
+              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Nos services réseaux sociaux</h2>
+            </header>
+            {renderProductGrid(SOCIAL_PLATFORMS)}
+
+            {/* Pricing Header */}
+            <section className="bg-white text-black rounded-[2rem] md:rounded-[4rem] p-10 md:p-20 mb-16 text-center">
+              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter">PRODUITS & TARIFS RÉSEAUX SOCIAUX</h2>
+              <p className="font-black uppercase tracking-[0.3em] text-[10px] md:text-sm opacity-60">Tarifs indicatifs – sans engagement long terme obligatoire.</p>
+            </section>
+
+            {/* Enterprise Offers */}
+            <header className="text-center mb-12">
+              <h2 className="text-2xl md:text-5xl font-black mb-4 uppercase tracking-tighter text-[#c9a24d]">OFFRES POUR ENTREPRISES</h2>
+            </header>
+            {renderProductGrid(SOCIAL_ENTERPRISE_PACKS)}
+
+            {/* Association Offers */}
+            <header className="text-center mb-12 mt-24">
+              <h2 className="text-2xl md:text-5xl font-black mb-4 uppercase tracking-tighter text-[#c9a24d]">OFFRES POUR ASSOCIATIONS (TARIFS ADAPTÉS)</h2>
+            </header>
+            {renderProductGrid(SOCIAL_ASSOCIATION_PACKS)}
+
+            {/* Ala Carte Section */}
+            <section className="bg-[#111] border border-[#222] rounded-[2rem] md:rounded-[4rem] p-10 md:p-20 mb-24">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                  <h3 className="text-2xl md:text-4xl font-black mb-10 uppercase tracking-tighter text-white">Création de contenu à la carte</h3>
+                  <div className="space-y-4">
+                    {[
+                      { l: "Vidéo TikTok", p: "30 € / vidéo" },
+                      { l: "Reel Instagram", p: "30 € / vidéo" },
+                      { l: "Visuel post", p: "20 €" },
+                      { l: "Histoire (lot de 5)", p: "25 €" },
+                      { l: "Texte / légende optimisée", p: "10 €" }
+                    ].map((item, i) => (
+                      <div key={i} className="flex justify-between items-center p-5 bg-black/40 rounded-2xl border border-white/5 group hover:border-[#c9a24d]/30 transition-all">
+                        <span className="text-gray-400 font-bold uppercase tracking-widest text-[10px] md:text-xs">{item.l}</span>
+                        <span className="text-[#c9a24d] font-black text-xs md:text-base">{item.p}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-4xl font-black mb-10 uppercase tracking-tighter text-white">Délais de mise en place</h3>
+                  <div className="space-y-4">
+                    {[
+                      { l: "Mise en place des comptes", d: "3 à 5 jours" },
+                      { l: "Première publication", d: "sous 7 jours" },
+                      { l: "Contenus mensuels", d: "planifiés à l’avance" }
+                    ].map((item, i) => (
+                      <div key={i} className="flex justify-between items-center p-5 bg-black/40 rounded-2xl border border-white/5">
+                        <span className="text-gray-400 font-bold uppercase tracking-widest text-[10px] md:text-xs">{item.l}</span>
+                        <span className="text-white font-black text-xs md:text-base">{item.d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* NO PROMISES Section */}
+            <section className="bg-[#111] rounded-[2rem] md:rounded-[4rem] p-10 md:p-20 mb-24 border-2 border-red-900/10">
+              <h2 className="text-3xl md:text-6xl font-black mb-16 uppercase tracking-tighter text-white text-center">Ce que Nexalli ne promet <span className="text-red-600">PAS</span></h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                {[
+                  { t: "Pas d’achat de followers", i: "fa-user-minus" },
+                  { t: "Pas de fausses vues", i: "fa-eye-slash" },
+                  { t: "Pas de promesses irréalistes", i: "fa-circle-xmark" },
+                  { t: "Une croissance progressive", i: "fa-arrow-trend-up" },
+                  { t: "Une communication authentique", i: "fa-comment-dots" },
+                  { t: "Une stratégie adaptée à votre réalité", i: "fa-puzzle-piece" }
+                ].map((item, i) => (
+                  <div key={i} className="p-8 rounded-3xl bg-black/60 border border-white/5 group">
+                    <i className={`fa-solid ${item.i} text-3xl mb-6 text-gray-700 group-hover:text-[#c9a24d] transition-colors`}></i>
+                    <p className="text-white font-black uppercase tracking-widest text-xs md:text-sm">{item.t}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Representative Gallery Header */}
+            <header className="text-center mb-16">
+              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Pourquoi choisir Nexalli ?</h2>
+            </header>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24 mt-16">
+              {[
+                "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1000&auto=format&fit=crop"
+              ].map((img, i) => (
+                <div key={i} className="rounded-[1.5rem] md:rounded-[2rem] overflow-hidden h-48 md:h-80 shadow-2xl border-2 border-[#222] group">
+                  <img src={img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale hover:grayscale-0" />
+                </div>
+              ))}
+            </div>
           </div>
         );
 
@@ -145,97 +270,6 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
-            <section className="bg-white text-black rounded-[2rem] md:rounded-[4rem] p-10 md:p-20 mb-24 text-center">
-              <h2 className="text-3xl md:text-6xl font-black mb-12 uppercase tracking-tighter">Pour qui est ce service ?</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16">
-                {[
-                  "Entrepreneurs et indépendants",
-                  "TPE / PME",
-                  "Associations (solidaires, sociales, culturelles…)",
-                  "Projets citoyens",
-                  "Créateurs de marques",
-                  "Structures locales ou nationales"
-                ].map((target, i) => (
-                  <div key={i} className="border-2 border-black/5 bg-gray-50 p-6 rounded-2xl font-black uppercase tracking-widest text-[10px] md:text-xs">
-                    {target}
-                  </div>
-                ))}
-              </div>
-              <p className="text-gray-500 font-black uppercase tracking-[0.3em] mb-12">Tous secteurs confondus.</p>
-              <button onClick={() => handleExternalLink(SOCIAL_LINKS.instagram)} className="bg-black text-white px-10 md:px-16 py-6 rounded-full font-black uppercase tracking-[0.2em] text-xs hover:bg-[#c9a24d] hover:text-black transition-all flex items-center space-x-4 mx-auto shadow-2xl group">
-                <i className="fa-brands fa-instagram text-2xl group-hover:scale-110 transition-transform"></i>
-                <span>Voir nos créations Instagram</span>
-              </button>
-            </section>
-            <header className="text-center mb-16">
-              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Notre méthodologie</h2>
-            </header>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24">
-              {[
-                "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000&auto=format&fit=crop"
-              ].map((img, i) => (
-                <div key={i} className="rounded-[1.5rem] md:rounded-[2rem] overflow-hidden h-48 md:h-80 shadow-2xl border-2 border-[#222] group">
-                  <img src={img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                </div>
-              ))}
-            </div>
-            <section className="bg-[#111] border border-[#222] rounded-[2rem] md:rounded-[4rem] p-10 md:p-20 mb-24">
-              <h2 className="text-3xl md:text-6xl font-black mb-16 uppercase tracking-tighter text-white text-center">Pourquoi choisir Nexalli ?</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-gray-400 font-bold mb-16">
-                {[
-                  { t: "Vision claire & pédagogique", desc: "Comprenez chaque étape de la création." },
-                  { t: "Branding adapté aux petits budgets", desc: "Des solutions pro accessibles." },
-                  { t: "Tarifs justes pour associations", desc: "Un soutien réel aux structures solidaires." },
-                  { t: "Création personnalisée", desc: "Zéro template, que de l'unique." },
-                  { t: "Cohérence site + image + communication", desc: "Un écosystème visuel complet." },
-                  { t: "Accompagnement humain", desc: "Un partenaire à votre écoute." }
-                ].map((item, i) => (
-                  <div key={i} className="space-y-4">
-                    <h4 className="text-white font-black text-lg uppercase tracking-widest flex items-center">
-                      <i className="fa-solid fa-star text-[#c9a24d] mr-4"></i>{item.t}
-                    </h4>
-                    <p className="text-sm leading-relaxed text-gray-500">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="text-center space-y-8 pt-12 border-t border-white/5">
-                <p className="text-xl md:text-2xl text-[#c9a24d] font-black uppercase tracking-tighter italic">
-                  Ici, pas de graphisme robotique ou impersonnel :<br/> on crée une image qui vous représente réellement.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-8">
-                   <div className="bg-black/40 p-8 rounded-3xl border border-white/5">
-                      <h4 className="text-white font-black uppercase text-sm mb-2">Tarifs transparents</h4>
-                      <p className="text-gray-500 text-xs">Les tarifs sont adaptés selon la structure (entreprise, association), le projet et le volume de supports à créer.</p>
-                   </div>
-                   <div className="bg-black/40 p-8 rounded-3xl border border-white/5">
-                      <h4 className="text-white font-black uppercase text-sm mb-2">Devis personnalisé</h4>
-                      <p className="text-gray-500 text-xs">Réponse rapide garantie sous 48h maximum.</p>
-                   </div>
-                </div>
-                <div className="pt-10">
-                   <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white">Vos projets nos actions</h2>
-                   <p className="text-[#c9a24d] font-black uppercase tracking-[0.4em] text-xs md:text-xl mt-4">Créer votre identité visuelle avec Nexalli.</p>
-                </div>
-              </div>
-            </section>
-            <div className="bg-black rounded-[2rem] p-6 md:p-10 border border-white/5 shadow-2xl flex flex-wrap justify-center gap-6 md:gap-12 mb-24">
-              {[
-                { n: "Instagram", i: "fa-instagram", l: SOCIAL_LINKS.instagram },
-                { n: "Youtube", i: "fa-youtube", l: SOCIAL_LINKS.youtube },
-                { n: "Facebook", i: "fa-facebook", l: SOCIAL_LINKS.facebook },
-                { n: "TikTok", i: "fa-tiktok", l: SOCIAL_LINKS.tiktok },
-                { n: "WhatsApp", i: "fa-whatsapp", l: SOCIAL_LINKS.whatsapp },
-                { n: "Email", i: "fa-envelope", l: `mailto:${contactEmail}` }
-              ].map((soc, i) => (
-                <button key={i} onClick={() => handleExternalLink(soc.l)} className="flex items-center space-x-3 text-white/40 hover:text-[#c9a24d] transition-all font-black uppercase tracking-widest text-[10px] md:text-xs">
-                  <i className={`fa-brands ${soc.i.includes('envelope') ? 'fa-solid' : 'fa-brands'} ${soc.i} text-xl md:text-2xl`}></i>
-                  <span>{soc.n}</span>
-                </button>
-              ))}
-            </div>
           </div>
         );
 
@@ -274,25 +308,10 @@ const App: React.FC = () => {
               ))}
             </div>
 
-            {/* New Options Section */}
             <header className="text-center mb-16 mt-32">
               <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Nos options</h2>
             </header>
             {renderProductGrid(WEB_OPTIONS)}
-
-            {/* Realistic Gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-24 mt-16">
-              {[
-                "https://images.unsplash.com/photo-1551288049-bbda48652ad8?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1547658719-da2b811691e6?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
-              ].map((img, i) => (
-                <div key={i} className="rounded-[1.5rem] md:rounded-[2rem] overflow-hidden h-48 md:h-80 shadow-2xl border-2 border-[#222] group">
-                  <img src={img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                </div>
-              ))}
-            </div>
           </div>
         );
 
@@ -337,50 +356,6 @@ const App: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-24 mb-16">
-              <div className="bg-[#111] p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] border border-[#222] shadow-2xl">
-                <h3 className="text-2xl md:text-4xl font-black mb-10 uppercase text-white tracking-tighter">Modalités</h3>
-                <ul className="space-y-6">
-                  {[
-                    { label: "Téléchargement immédiat", icon: "fa-download" },
-                    { label: "Format PDF", icon: "fa-file-pdf" },
-                    { label: "Compatible tout support", icon: "fa-mobile-screen" },
-                    { label: "Sans abonnement", icon: "fa-unlock" }
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center space-x-4 text-gray-400 font-bold">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#c9a24d]">
-                        <i className={`fa-solid ${item.icon}`}></i>
-                      </div>
-                      <span className="uppercase tracking-widest text-xs md:text-sm">{item.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-[#c9a24d] p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] shadow-2xl text-black">
-                <h3 className="text-2xl md:text-4xl font-black mb-6 uppercase tracking-tighter">Besoin d’un accompagnement ?</h3>
-                <p className="font-bold text-sm md:text-lg mb-10 leading-relaxed">
-                  Les formations Nexalli sont conçues pour être accessibles et puissantes. Elles peuvent être :
-                </p>
-                <div className="space-y-4">
-                  {[
-                    "Utilisées seules pour une autonomie totale",
-                    "Combinées entre elles pour une expertise 360°",
-                    "Complétées par un coaching personnalisé"
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-4 font-black uppercase text-[10px] md:text-sm tracking-widest bg-black/5 p-4 rounded-xl">
-                      <i className="fa-solid fa-plus-circle"></i>
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <button 
-                  onClick={() => setCurrentPage(Page.Contact)}
-                  className="mt-12 w-full bg-black text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs md:text-base hover:bg-white hover:text-black transition-all"
-                >
-                  Demander un coaching
-                </button>
-              </div>
             </div>
           </div>
         );
