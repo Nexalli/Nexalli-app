@@ -90,6 +90,169 @@ const App: React.FC = () => {
           </div>
         );
 
+      case Page.WebDev:
+        return (
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            <header className="text-center mb-16">
+              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-xs mb-4 block">Ingénierie Web & Design</span>
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos types de site web</h2>
+              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Des solutions sur mesure avec une esthétique 3D immersive.</p>
+            </header>
+
+            {/* Main Products Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-20">
+              {WEB_PRODUCTS.map((product, idx) => (
+                <div key={idx} className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+                  <div className="relative h-72 overflow-hidden">
+                    <img src={product.imageUrl} alt={product.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-6 left-8 flex flex-col">
+                       <span className="text-white font-black uppercase tracking-tighter text-lg">{product.priceInfo}</span>
+                       <span className="text-white/70 text-[10px] font-black uppercase">Livré en {product.delay}</span>
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-black mb-3 leading-tight uppercase tracking-tighter">{product.title}</h3>
+                    <div className="space-y-3 mb-8 flex-grow">
+                      {product.points.map((pt: string, i: number) => (
+                        <div key={i} className="flex items-center text-sm font-bold text-gray-500">
+                          <i className="fa-solid fa-check text-[#c9a24d] mr-3"></i>
+                          {pt}
+                        </div>
+                      ))}
+                    </div>
+                    <button 
+                      onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)}
+                      className="bg-black text-white py-5 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3 shadow-xl"
+                    >
+                      <i className="fa-brands fa-whatsapp text-xl"></i>
+                      <span>COMMANDER VIA WHATSAPP</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <header className="text-center mb-16 mt-24">
+              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos Options</h2>
+              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Optimisez votre présence avec nos services additionnels.</p>
+            </header>
+
+            {/* Options Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-20">
+              {/* Option 1: Refonte */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+                <div className="relative h-64 overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop" alt="Refonte site" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute bottom-6 left-8">
+                    <span className="text-white font-black uppercase text-lg">Asso: dès 350€ | Ent: dès 500€</span>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">1. Refonte de site internet</h3>
+                  <ul className="space-y-2 mb-8 flex-grow text-gray-500 font-bold text-sm">
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Refonte du design & Modernisation</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Technique de correction & Migration</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Possibilité d'hébergement Gringer</li>
+                    <li><i className="fa-solid fa-clock text-[#c9a24d] mr-2"></i>Délais : 5 à 10 jours</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-5 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3">
+                    <i className="fa-brands fa-whatsapp text-xl"></i>
+                    <span>CONTACTER</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Option 2: Hébergement */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+                <div className="relative h-64 overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=1000&auto=format&fit=crop" alt="Hébergement" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute bottom-6 left-8">
+                    <span className="text-white font-black uppercase text-lg">Selon formule Gringer</span>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">2. L'hébergement & la maintenance</h3>
+                  <ul className="space-y-2 mb-8 flex-grow text-gray-500 font-bold text-sm">
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Domaine à moindre coût / mois</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Serveurs fiables & Certificat SSL</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Adapté WordPress & Nexalli</li>
+                    <li><i className="fa-solid fa-clock text-[#c9a24d] mr-2"></i>Délais : 24h/48h</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-5 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3">
+                    <i className="fa-brands fa-whatsapp text-xl"></i>
+                    <span>CONTACTER</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Option 3: Maintenance Nexalli */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+                <div className="relative h-64 overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop" alt="Maintenance" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute bottom-6 left-8">
+                    <span className="text-white font-black uppercase text-lg">30 € / mois</span>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">3. Maintenance Gringer + Nexalli</h3>
+                  <ul className="space-y-2 mb-8 flex-grow text-gray-500 font-bold text-sm">
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Mises à jour WordPress & Plugins</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Sauvegardes & Sécurité renforcée</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Support technique inclus</li>
+                    <li><i className="fa-solid fa-clock text-[#c9a24d] mr-2"></i>Fréquence : Mensuelle</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-5 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3">
+                    <i className="fa-brands fa-whatsapp text-xl"></i>
+                    <span>CONTACTER</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Option 4: Suppléments */}
+              <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
+                <div className="relative h-64 overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1000&auto=format&fit=crop" alt="Options sup" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="absolute bottom-6 left-8">
+                    <span className="text-white font-black uppercase text-lg">Sur devis</span>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">4. Quelques options supplémentaires</h3>
+                  <ul className="space-y-2 mb-8 flex-grow text-gray-500 font-bold text-sm">
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Rédaction SEO : 10 à 30 €/section</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Pages sup : dès 40 €</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Optimisation SEO complète : 120 €</li>
+                    <li><i className="fa-solid fa-plus text-[#c9a24d] mr-2"></i>Blog & Création visuelle</li>
+                  </ul>
+                  <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="bg-black text-white py-5 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3">
+                    <i className="fa-brands fa-whatsapp text-xl"></i>
+                    <span>CONTACTER</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Final 3D Gallery for Web Category */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24">
+              {[
+                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1614332284683-517b1a7b55a2?q=80&w=1000&auto=format&fit=crop"
+              ].map((img, i) => (
+                <div key={i} className="rounded-[2rem] overflow-hidden h-64 shadow-2xl border-4 border-white transform hover:scale-105 transition-transform duration-500">
+                  <img src={img} className="w-full h-full object-cover" alt="Web 3D Visualization" />
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
       case Page.Branding:
         return (
           <div className="animate-in slide-in-from-bottom-4 duration-500">
@@ -387,51 +550,6 @@ const App: React.FC = () => {
                     >
                       <i className="fa-solid fa-cart-shopping"></i>
                       <span>METTRE AU PANIER</span>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-
-      case Page.WebDev:
-        return (
-          <div className="animate-in slide-in-from-bottom-4 duration-500">
-            <header className="text-center mb-16">
-              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-xs mb-4 block">Haute Couture Digitale</span>
-              <h2 className="text-5xl font-black mb-4 uppercase tracking-tighter">Nos types de site web</h2>
-              <p className="text-gray-500 text-xl max-w-2xl mx-auto">Des solutions sur mesure pour chaque étape de votre croissance.</p>
-            </header>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mb-16">
-              {WEB_PRODUCTS.map((product, idx) => (
-                <div key={idx} className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl transition-all group flex flex-col h-full">
-                  <div className="relative h-72 overflow-hidden">
-                    <img src={product.imageUrl} alt={product.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-6 left-8 flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-[#c9a24d] rounded-xl flex items-center justify-center text-black text-xl">
-                        <i className={`fa-solid ${product.icon}`}></i>
-                      </div>
-                      <span className="text-white font-black uppercase tracking-tighter text-lg">{product.priceInfo}</span>
-                    </div>
-                  </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-black mb-3 leading-tight uppercase tracking-tighter">{product.title}</h3>
-                    <div className="space-y-3 mb-8 flex-grow">
-                      {product.points.map((pt: string, i: number) => (
-                        <div key={i} className="flex items-center text-sm font-bold text-gray-500">
-                          <i className="fa-solid fa-check text-[#c9a24d] mr-3"></i>
-                          {pt}
-                        </div>
-                      ))}
-                    </div>
-                    <button 
-                      onClick={() => handleExternalLink(product.link || '')}
-                      className="bg-black text-white px-8 py-4 rounded-2xl font-black hover:bg-[#c9a24d] hover:text-black transition-all flex items-center justify-center space-x-3"
-                    >
-                      <i className="fa-brands fa-whatsapp text-xl"></i>
-                      <span>COMMANDER</span>
                     </button>
                   </div>
                 </div>
