@@ -12,28 +12,19 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <nav className="sticky top-[73px] md:top-[105px] z-[55] bg-black/80 backdrop-blur-2xl border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16 items-center">
-          <div 
-            className="flex-shrink-0 flex items-center cursor-pointer" 
-            onClick={() => setCurrentPage(Page.Home)}
-          >
-            <span className="text-2xl font-black tracking-tighter" style={{ color: COLORS.primary }}>
-              NEXALLI
-            </span>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-4">
+        <div className="flex justify-center h-16 md:h-20 items-center">
+          {/* Desktop Navigation - Centered for Premium Look */}
+          <div className="hidden lg:flex space-x-2">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => setCurrentPage(item.id)}
-                className={`px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
+                className={`px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${
                   currentPage === item.id 
-                    ? 'text-white bg-black' 
-                    : 'text-gray-600 hover:text-black hover:bg-gray-100'
+                    ? 'text-black bg-[#c9a24d] shadow-[0_0_15px_rgba(201,162,77,0.3)]' 
+                    : 'text-white/60 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {item.label}
@@ -41,13 +32,14 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
             ))}
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile menu toggle */}
+          <div className="lg:hidden flex items-center w-full justify-between">
+            <span className="text-white/30 text-[9px] font-black uppercase tracking-[0.3em]">Menu Digital</span>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-xl text-[#c9a24d] hover:bg-white/5 focus:outline-none transition-all"
             >
-              <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars'} text-xl text-black`}></i>
+              <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars-staggered'} text-xl`}></i>
             </button>
           </div>
         </div>
@@ -55,8 +47,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 animate-in slide-in-from-top duration-300">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="lg:hidden bg-black border-t border-white/5 animate-in slide-in-from-top duration-300">
+          <div className="px-4 pt-4 pb-8 space-y-2">
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
@@ -64,13 +56,13 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
                   setCurrentPage(item.id);
                   setIsOpen(false);
                 }}
-                className={`block w-full text-left px-3 py-4 rounded-md text-base font-medium ${
+                className={`flex items-center w-full text-left px-5 py-5 rounded-2xl text-sm font-black uppercase tracking-[0.2em] transition-all ${
                   currentPage === item.id 
-                    ? 'bg-black text-white' 
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-black'
+                    ? 'bg-[#c9a24d] text-black shadow-lg' 
+                    : 'text-white/40 border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:text-white'
                 }`}
               >
-                <i className={`fa-solid ${item.icon} mr-3 opacity-70`}></i>
+                <i className={`fa-solid ${item.icon} mr-4 text-lg opacity-80`}></i>
                 {item.label}
               </button>
             ))}

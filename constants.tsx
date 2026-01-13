@@ -2,9 +2,11 @@
 import { Page, ServiceCardProps } from './types';
 
 export const COLORS = {
-  primary: '#000000',
+  primary: '#050505',
   secondary: '#FFFFFF',
   accent: '#c9a24d',
+  cardBg: '#111111',
+  border: '#222222'
 };
 
 export const SOCIAL_LINKS = {

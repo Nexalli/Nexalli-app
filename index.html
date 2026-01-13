@@ -1,20 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>NEXALLI – L'Excellence Digitale</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #050505;
+      --accent: #c9a24d;
+      --accent-light: #e5c786;
+    }
     body {
       font-family: 'Inter', sans-serif;
+      background-color: var(--primary);
+      color: #ffffff;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
     }
     #root {
       min-height: 100vh;
+    }
+    /* Smooth scaling for mobile titles */
+    .mobile-title {
+      font-size: clamp(1.75rem, 8vw, 3.5rem);
+    }
+    .selection-gold::selection {
+      background: var(--accent);
+      color: black;
+    }
+    /* Custom scrollbar for digital feel */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 10px;
     }
   </style>
 <script type="importmap">
@@ -29,7 +61,7 @@
 }
 </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="selection-gold">
   <div id="root"></div>
   <script type="module" src="./index.tsx"></script>
 </body>
