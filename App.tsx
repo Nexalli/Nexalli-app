@@ -271,7 +271,7 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-24">
               <div className="bg-[#111] p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-[#222]">
                 <h3 className="text-2xl md:text-4xl font-black mb-8 uppercase text-white">Contenu à la carte</h3>
-                <div className="space-y-4 font-bold text-gray-400 text-sm md:text-base">
+                <div className="space-y-4 font-bold text-gray-700 text-sm md:text-base">
                   <div className="flex justify-between border-b border-[#222] pb-3"><span>Vidéo TikTok</span> <span className="text-[#c9a24d]">30 €</span></div>
                   <div className="flex justify-between border-b border-[#222] pb-3"><span>Reel Instagram</span> <span className="text-[#c9a24d]">30 €</span></div>
                   <div className="flex justify-between border-b border-[#222] pb-3"><span>Visuel post</span> <span className="text-[#c9a24d]">20 €</span></div>
@@ -327,145 +327,97 @@ const App: React.FC = () => {
           </div>
         );
 
-      case Page.WebDev:
+      case Page.Training:
         return (
           <div className="animate-in slide-in-from-bottom-4 duration-500 px-2 md:px-0">
             <header className="text-center mb-16">
-              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 block">Ingénierie & Excellence</span>
-              <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase tracking-tighter text-white">Nos sites web</h2>
-              <p className="text-gray-500 text-sm md:text-xl max-w-2xl mx-auto font-medium">L'élégance numérique alliée à la performance technique.</p>
+              <span className="text-[#c9a24d] font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 block">Académie Nexalli</span>
+              <h2 className="text-4xl md:text-7xl font-black mb-4 uppercase tracking-tighter text-white">Nos Formations Digitales</h2>
+              <p className="text-gray-500 text-sm md:text-xl max-w-2xl mx-auto font-medium">Propulsez vos compétences avec nos guides stratégiques au format PDF.</p>
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-20">
-              {WEB_PRODUCTS.map((product, idx) => (
+              {FORMATIONS_PRODUCTS.map((product, idx) => (
                 <div key={idx} className="bg-[#111] rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-[#222] shadow-2xl hover:border-[#c9a24d]/30 transition-all group flex flex-col h-full">
-                  <div className="relative h-60 md:h-80 overflow-hidden">
+                  <div className="relative h-60 md:h-72 overflow-hidden">
                     <img src={product.imageUrl} alt={product.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-transparent"></div>
-                    <div className="absolute bottom-6 left-8 flex flex-col">
-                       <span className="text-white font-black uppercase tracking-tighter text-lg md:text-2xl">{product.priceInfo}</span>
-                       <span className="text-[#c9a24d] text-[10px] md:text-xs font-black uppercase tracking-widest mt-1">Délai : {product.delay}</span>
+                    <div className="absolute top-6 right-6">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl flex items-center justify-center text-black text-lg md:text-xl shadow-lg">
+                        <i className={`fa-solid ${product.icon}`}></i>
+                      </div>
                     </div>
                   </div>
                   <div className="p-8 md:p-12 flex flex-col flex-grow">
-                    <h3 className="text-2xl md:text-4xl font-black mb-6 leading-tight uppercase tracking-tighter text-white">{product.title}</h3>
-                    <div className="space-y-4 mb-10 flex-grow">
-                      {product.points.map((pt: string, i: number) => (
-                        <div key={i} className="flex items-center text-xs md:text-base font-bold text-gray-400">
-                          <i className="fa-solid fa-check text-[#c9a24d] mr-4"></i>
-                          {pt}
+                    <h3 className="text-2xl md:text-3xl font-black mb-2 leading-tight uppercase tracking-tighter text-white">{product.title}</h3>
+                    <p className="text-[#c9a24d] font-black uppercase text-[10px] md:text-xs mb-6 tracking-widest">Objectif : {product.objective}</p>
+                    <p className="text-gray-400 mb-6 font-bold text-sm md:text-base">{product.description}</p>
+                    <div className="space-y-3 mb-10 flex-grow">
+                      {product.points.map((pt, i) => (
+                        <div key={i} className="flex items-start text-xs md:text-sm font-bold text-gray-500">
+                          <i className="fa-solid fa-check-circle text-[#c9a24d] mr-3 mt-1"></i>
+                          <span>{pt}</span>
                         </div>
                       ))}
                     </div>
                     <button 
-                      onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)}
-                      className="bg-white text-black py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-base hover:bg-[#c9a24d] transition-all flex items-center justify-center space-x-3 shadow-xl"
+                      onClick={() => handleExternalLink(product.link || '')}
+                      className="w-full bg-white text-black py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-base hover:bg-[#c9a24d] transition-all flex items-center justify-center space-x-3 shadow-xl"
                     >
-                      <i className="fa-brands fa-whatsapp text-xl"></i>
-                      <span>Lancer mon projet</span>
+                      <i className="fa-solid fa-cart-shopping"></i>
+                      <span>Mettre au panier</span>
                     </button>
                   </div>
                 </div>
               ))}
             </div>
 
-            <header className="text-center mb-16 mt-32">
-              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Nos Options</h2>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-20">
-              {WEB_OPTIONS.map((opt, i) => (
-                <div key={i} className="bg-[#0c0c0c] rounded-[2rem] overflow-hidden border border-[#1a1a1a] shadow-xl flex flex-col h-full group">
-                  <div className="relative h-48 md:h-64 overflow-hidden">
-                    <img src={opt.imageUrl} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" />
-                    <div className="absolute bottom-6 left-8">
-                       <span className="text-white font-black uppercase text-sm md:text-lg bg-black/50 backdrop-blur-md px-4 py-2 rounded-lg">{opt.priceInfo}</span>
-                    </div>
-                  </div>
-                  <div className="p-8 md:p-10 flex flex-col flex-grow">
-                    <h3 className="text-xl md:text-2xl font-black mb-4 uppercase text-white">{opt.title}</h3>
-                    <ul className="space-y-3 mb-8 flex-grow text-xs md:text-sm font-bold text-gray-500">
-                      {opt.points.map((p, pi) => <li key={pi}><i className="fa-solid fa-plus text-[#c9a24d] mr-3"></i>{p}</li>)}
-                    </ul>
-                    <button onClick={() => handleExternalLink(SOCIAL_LINKS.whatsapp)} className="border border-white/10 text-white py-4 rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-white hover:text-black transition-all">Contacter</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Gallery Final */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-24 mb-12">
-              {[
-                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop",
-                "https://images.unsplash.com/photo-1614332284683-517b1a7b55a2?q=80&w=1000&auto=format&fit=crop"
-              ].map((img, i) => (
-                <div key={i} className="rounded-[1rem] md:rounded-[2rem] overflow-hidden h-32 md:h-64 border-2 border-[#222] shadow-2xl transform transition-all duration-700 hover:scale-105">
-                  <img src={img} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-
-      case Page.Branding:
-        return (
-          <div className="animate-in slide-in-from-bottom-4 duration-500 px-2 md:px-0">
-            {/* Branding Manifesto */}
-            <section className="bg-[#111] rounded-[2rem] md:rounded-[3.5rem] p-8 md:p-20 mb-16 border border-[#222] shadow-2xl text-center">
-              <span className="text-[#c9a24d] font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 block">Manifeste de Marque</span>
-              <h2 className="text-3xl md:text-6xl font-black mb-12 uppercase tracking-tighter text-white">Pourquoi une identité professionnelle ?</h2>
-              <div className="max-w-4xl mx-auto space-y-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 text-left">
+            {/* Modalités & Accompagnement */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-24 mb-16">
+              <div className="bg-[#111] p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] border border-[#222] shadow-2xl">
+                <h3 className="text-2xl md:text-4xl font-black mb-10 uppercase text-white tracking-tighter">Modalités</h3>
+                <ul className="space-y-6">
                   {[
-                    "Renforcer la crédibilité immédiate",
-                    "Développer une image unique",
-                    "Surpasser la concurrence",
-                    "Cohérence multi-plateformes",
-                    "Valoriser vos ambitions",
-                    "Inspirer confiance absolue"
+                    { label: "Téléchargement immédiat", icon: "fa-download" },
+                    { label: "Format PDF", icon: "fa-file-pdf" },
+                    { label: "Compatible tout support", icon: "fa-mobile-screen" },
+                    { label: "Sans abonnement", icon: "fa-unlock" }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center space-x-4 bg-black/40 p-5 rounded-2xl border border-white/5">
-                      <div className="w-6 h-6 rounded-full bg-[#c9a24d] flex items-center justify-center text-black">
-                        <i className="fa-solid fa-check text-[10px]"></i>
+                    <li key={i} className="flex items-center space-x-4 text-gray-400 font-bold">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#c9a24d]">
+                        <i className={`fa-solid ${item.icon}`}></i>
                       </div>
-                      <span className="text-white font-bold text-xs md:text-base">{item}</span>
+                      <span className="uppercase tracking-widest text-xs md:text-sm">{item.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-[#c9a24d] p-10 md:p-16 rounded-[2rem] md:rounded-[3rem] shadow-2xl text-black">
+                <h3 className="text-2xl md:text-4xl font-black mb-6 uppercase tracking-tighter">Besoin d’un accompagnement ?</h3>
+                <p className="font-bold text-sm md:text-lg mb-10 leading-relaxed">
+                  Les formations Nexalli sont conçues pour être accessibles et puissantes. Elles peuvent être :
+                </p>
+                <div className="space-y-4">
+                  {[
+                    "Utilisées seules pour une autonomie totale",
+                    "Combinées entre elles pour une expertise 360°",
+                    "Complétées par un coaching personnalisé"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center space-x-4 font-black uppercase text-[10px] md:text-sm tracking-widest bg-black/5 p-4 rounded-xl">
+                      <i className="fa-solid fa-plus-circle"></i>
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
-                <p className="font-black text-black bg-[#c9a24d] p-6 md:p-8 rounded-2xl uppercase tracking-widest text-xs md:text-xl shadow-lg">
-                  L'identité visuelle est un investissement stratégique majeur.
-                </p>
+                <button 
+                  onClick={() => setCurrentPage(Page.Contact)}
+                  className="mt-12 w-full bg-black text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs md:text-base hover:bg-white hover:text-black transition-all"
+                >
+                  Demander un coaching
+                </button>
               </div>
-            </section>
-
-            <header className="text-center mb-16">
-              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Services Branding</h2>
-            </header>
-            {renderProductGrid(BRANDING_SERVICES)}
-
-            <header className="text-center mb-16 mt-32">
-              <h2 className="text-3xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-white">Packs complets</h2>
-            </header>
-            {renderProductGrid(BRANDING_PACKS)}
-
-            {/* Target & Methodology Sections are implied within this switch structure but condensed for code size rules */}
-            <section className="bg-black text-white rounded-[2rem] md:rounded-[3rem] p-10 md:p-20 mb-24 relative overflow-hidden border border-[#222] text-center">
-              <div className="absolute top-0 left-0 w-64 h-64 bg-[#c9a24d] opacity-5 blur-3xl"></div>
-              <h2 className="text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter">Pour qui est ce service ?</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-16">
-                {["Entrepreneurs", "TPE / PME", "Associations", "Projets Citoyens", "Structures Nationales"].map((target, i) => (
-                  <div key={i} className="border border-white/5 bg-white/5 p-4 md:p-6 rounded-2xl font-black uppercase tracking-widest text-[10px] md:text-sm">
-                    {target}
-                  </div>
-                ))}
-              </div>
-              <button onClick={() => handleExternalLink(SOCIAL_LINKS.instagram)} className="bg-white text-black px-10 md:px-16 py-5 rounded-full font-black uppercase tracking-[0.2em] text-xs hover:bg-[#c9a24d] transition-all flex items-center space-x-4 mx-auto shadow-2xl">
-                <i className="fa-brands fa-instagram text-xl"></i>
-                <span>Voir le Portfolio</span>
-              </button>
-            </section>
+            </div>
           </div>
         );
 
