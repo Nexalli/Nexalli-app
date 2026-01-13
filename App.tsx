@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>(Page.Home);
-  const contactEmail = "contact@nexalli.com";
+  const contactEmail = "nbynexalli@gmail.com";
 
   const handleExternalLink = (url: string) => {
     window.open(url, '_blank');
